@@ -9,6 +9,6 @@ class TodoList < ApplicationRecord
   # Atribuindo valores de status
   enum status: { personal: 0, shareable: 1 }
 
-  # Name must exists
+  # Nome da lista deve existir
   validates :name, presence: { message: "Name can't be blank" }
 end
