@@ -45,7 +45,7 @@
         <% end %>
 
         <%# Adiciona tasks quando o usuário editar uma lista %>
-        <%= link_to_task_fields('New Task', form, :tasks, class: "add_new_task_btn") %>
+        <%= link_to_add_fields('New Task', form, :tasks, class: "add_new_task_btn") %>
         <%= form.submit 'Save', class: "submit_new_task_btn" %>
       <% end %>
     <% end %>

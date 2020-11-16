@@ -7,17 +7,18 @@
     <%= form_with model: @todo_list do |form| %>
       <div class="form_status">
         <%= form.label(:status, "Private") %>
-        <%= form.check_box(:status, :personal, checked: true) %>
+        <%= form.radio_button(:status, :personal, checked: true) %>
         <%= form.label(:status, "Public") %>
-        <%= form.check_box(:status, :shareable) %>
+        <%= form.radio_button(:status, :shareable) %>
       </div>
+      
       <div class="name_form">
         <%= form.label :name, 'Name:' %>
         <%= form.text_field :name %>
       </div>
 
       <%# Adiciona tasks no momento da criação de uma lista %>
-      <%= link_to_new_task_fields('Task', form, :task) %>
+      <%= link_to_add_fields('New task', form, :tasks) %>
 
       <div class="new_actions">
         <%= form.submit 'Save', class: "btn_new_save" %>
