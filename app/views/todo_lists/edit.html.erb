@@ -1,0 +1,49 @@
+<div class="container">
+      <h1><%= @todo_list.name %></h1>
+      <%= link_to 'Delete List', todo_list_path(@todo_list), method: :delete, class: "delete_list_btn", data: { confirm: 'Are you sure?' } %>
+
+  <%= form_with model: @todo_list do |form| %>
+    <div class="form">
+      <%= form.label(:status, "Private") %>
+      <%= form.radio_button(:status, :personal, checked: true) %>
+      <%= form.label(:status, "Public") %>
+      <%= form.radio_button(:status, :shareable) %>
+    </div>
+    <div class="form_name">
+      <%= form.label :name, 'Name:' %>
+      <%= form.text_field :name %>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col">Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @todo_list.taks.order(created_at: :desc).each do |taks|  %>
+            <tr>
+                <td><%= taks.description %></td>
+                <td><%= link_to 'Delete item', todo_list_taks_path(@todo_list, taks), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+      <div class="submit">
+          <%= form.submit 'Save', class: "btn_save" %>
+      </div>
+  <% end %>
+
+  <div class="error">
+      <% if @todo_list.errors.any?%>
+          <p>Please, correct the errors in order to continue:</p>
+          <% @todo_list.errors.full_messages.each do |message|  %>
+              <p><%= message %></p>
+          <% end %>
+      <% end %>
+  </div>
+
+  <%= link_to 'Back', todo_list_path(@todo_list) %>
+</div>

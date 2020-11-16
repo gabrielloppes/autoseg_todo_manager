@@ -1,0 +1,89 @@
+<div class="container">
+    <header>
+      <h1><%= @todo_list.name %></h1>
+    </header>
+
+  <main>
+    <div class="col-2 mt-3">
+      <% if @todo_list.shareable? && @todo_list.user != current_user %>
+        <% unless @favorites_ids.include?(@todo_list.id) %>
+          <%= form_with(url: '/favorites', method: :create) do %>
+            <%= hidden_field_tag :todo_list_id, @todo_list.id %>
+            <%= submit_tag("Favorite", class: "btn_favorite") %>
+          <% end %>
+        <% else %>
+          <%= form_with(url: favorite_path, method: :delete) do %>
+            <%= hidden_field_tag :todo_list_id, @todo_list.id %>
+            <%= submit_tag("Unfavorite", class: "btn_unfavorite") %>
+          <% end %>
+        <% end %>
+      <% end %>
+    </div>
+
+    <div class="col-2 mt-3">
+      <% if @todo_list.shareable? && @todo_list.user == current_user %>
+        <%= form_with(url: todo_list_set_private_path(@todo_list.id), method: :put) do %>
+          <%= hidden_field_tag :status, :personal %>
+          <%= submit_tag("Make it private", class: "btn_make_private") %>
+        <% end %>
+      <% elsif @todo_list.personal? %>
+        <%= form_with(url: todo_list_set_public_path(@todo_list.id), method: :put) do %>
+          <%= hidden_field_tag :status, :shareable %>
+          <%= submit_tag("Make it public", class: "btn_make_public") %>
+        <% end %>
+      <% end %>
+    </div>
+
+    <% if @todo_list.user == current_user %>
+      <%= link_to 'Edit List', edit_todo_list_path(@todo_list), class:"edit_list_btn" %>
+    <% end %>
+
+
+    <% if @todo_list.user == current_user %>
+      <%= form_with(model: @todo_list, url: todo_list_create_task_path(@todo_list.id), method: :put) do |form| %>
+        <%= form.fields_for :tasks do |f| %>
+        <% end %>
+
+        <%# Adiciona tasks quando o usuário editar uma lista %>
+        <%= link_to_task_fields('New Task', form, :tasks, class: "add_new_task_btn") %>
+        <%= form.submit 'Save', class: "submit_new_task_btn" %>
+      <% end %>
+    <% end %>
+
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Tarefas</th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>c
+        <% @todo_list.tasks.order(created_at: :desc).each do |task| %>
+          <tr>
+            <td>
+              <% if task.open? %>
+                <%= task.description %>
+              <% else %>
+                <del><%= task.description %></del>
+              <% end %>
+            </td>
+            <td>
+              <% if task.open? && @todo_list.user == current_user %>
+                <%= form_with(url: todo_list_task_make_it_done_path(@todo_list.id,task.id), method: :put) do %>
+                  <%= hidden_field_tag :status, :closed %>
+                  <%= submit_tag("Done", class: "btn_done", id: "make-it-done-#{task.id}") %>
+                <% end %>
+              <% elsif task.closed? && @todo_list.user == current_user %>
+                <%= form_with(url: todo_list_task_make_it_undone_path(@todo_list.id,task.id), method: :put) do %>
+                  <%= hidden_field_tag :status, :open %>
+                  <%= submit_tag("Undone", class: "btn_undone", id: "make-it-undone-#{task.id}") %>
+                <% end %>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </main>
+  <%= link_to 'Back', todo_lists_path, class:"back_show" %>
+</div>

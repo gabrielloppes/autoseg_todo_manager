@@ -1,0 +1,31 @@
+<div class="container">
+  <header>
+    <h1>My lists</h1>
+    <%= link_to 'New List', new_todo_list_path, class:"new_list_btn" %>
+  </header>
+
+  <main class="main-section">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col">Visibility</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @todo_lists.each do |todo_list|  %>
+          <tr>
+            <td><%= link_to todo_list.name, todo_list_path(todo_list) %></td>
+            <td>
+              <% if todo_list.personal? %>
+                <span>Private</span>
+              <% elsif todo_list.shareable? %>
+                <span>Public</span>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </main>
+</div>
