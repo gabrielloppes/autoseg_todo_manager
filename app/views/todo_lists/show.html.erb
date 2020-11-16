@@ -4,7 +4,7 @@
     </header>
 
   <main>
-    <div class="col-2 mt-3">
+    <div class="favorite_or_unfavorite_section">
       <% if @todo_list.shareable? && @todo_list.user != current_user %>
         <% unless @favorites_ids.include?(@todo_list.id) %>
           <%= form_with(url: '/favorites', method: :create) do %>
@@ -20,7 +20,7 @@
       <% end %>
     </div>
 
-    <div class="col-2 mt-3">
+    <div class="private_or_public_section">
       <% if @todo_list.shareable? && @todo_list.user == current_user %>
         <%= form_with(url: todo_list_set_private_path(@todo_list.id), method: :put) do %>
           <%= hidden_field_tag :status, :personal %>
