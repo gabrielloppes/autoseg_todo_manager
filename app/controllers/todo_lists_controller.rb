@@ -1,15 +1,14 @@
 class TodoListsController < ApplicationController
   before_action :set_todo_list, only: [:show, :edit, :update, :destroy]
+
   def index
     # Mostra todas as listas em ordem de criação
-    @todo_lists = current_user.todo_lists.order(created_at: :desc)
+    @todo_lists = current_user.todo_lists
   end
 
   def show
     # Verifica se o usuário que está tentando acessar uma lista possui os requisitos.
-
     @task = @todo_list.tasks.build
-
     # if !check_access?
     #   flash[:alert] = "You don't have access to this list"
     #   redirect_to root_path
@@ -20,8 +19,7 @@ class TodoListsController < ApplicationController
 
   # No momento da criação o usuário pode criar uma lista e ao mesmo tempo criar tarefas para essa lista
   def new
-    @todo_list = TodoList.new
-    @todo_list.tasks.build
+    @todo_list = current_user.todo_lists.build
   end
 
   def edit
@@ -38,8 +36,8 @@ class TodoListsController < ApplicationController
     @todo_list = current_user.todo_lists.build(todo_list_params)
 
     if @todo_list.save
-      redirect_to @todo_list
-      flash[:notice] = "List created"
+      redirect_to @todo_list, notice: 'List created'
+      render :show, status: :created, location: @todo_list
     else
       render :new
     end
@@ -55,8 +53,8 @@ class TodoListsController < ApplicationController
 
   def update
     if @todo_list.update(todo_list_params)
-      redirect_to @todo_list
-      flash[:notice] = "'#{@todo_list.name}' was update"
+      redirect_to @todo_list, notice: "'#{@todo_list.name}' was update"
+      render :show, status: :ok, location: @todo_list
     else
       render :edit
     end
@@ -64,8 +62,7 @@ class TodoListsController < ApplicationController
 
   def destroy
     @todo_list.destroy
-    redirect_to todo_lists_url
-    flash[:alert] = "'#{@todo_list.name}' was removed"
+    redirect_to todo_lists_url, alert: "List removed"
   end
 
   # def create_task
@@ -110,7 +107,7 @@ class TodoListsController < ApplicationController
   # end
 
   def set_todo_list
-    @todo_list = TodoList.find(params[:id])
+    @todo_list = current_user.todo_lists.find(params[:id])
   end
 
   def todo_list_params

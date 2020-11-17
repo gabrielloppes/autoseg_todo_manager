@@ -14,7 +14,7 @@ class TodoList < ApplicationRecord
   
   # Verifica o status das tasks
   def status
-    return 'not-started' id tasks.none?
+    return 'not-started' if tasks.none?
     
     if tasks.all? { |task| task.complete? }
       'complete'

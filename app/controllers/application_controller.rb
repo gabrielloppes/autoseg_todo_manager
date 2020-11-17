@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  before_action :authenticate_user!
   # # Habilita a autenticação no escopo inicial do projeto
   # before_action :authenticate_user!
 

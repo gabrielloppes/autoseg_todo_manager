@@ -1,37 +1,4 @@
-<div class="container">
-  <header>
-    <h1>New List</h1>
-  </header>
+<%= link_to 'Back', todo_lists_path, class: 'show_back_btn' %>
+<h2>New List</h2>
 
-  <main>
-    <%= form_with model: @todo_list do |form| %>
-      <div class="form_status">
-        <%= form.label(:status, "Private") %>
-        <%= form.radio_button(:status, :personal, checked: true) %>
-        <%= form.label(:status, "Public") %>
-        <%= form.radio_button(:status, :shareable) %>
-      </div>
-      
-      <div class="name_form">
-        <%= form.label :name, 'Name:' %>
-        <%= form.text_field :name %>
-      </div>
-
-      <%# Adiciona tasks no momento da criação de uma lista %>
-      <%= link_to_add_fields('New task', form, :tasks) %>
-
-      <div class="new_actions">
-        <%= form.submit 'Save', class: "btn_new_save" %>
-        <%= link_to 'Back', todo_lists_path %>
-      </div>
-    <% end %>
-  </main>
-
-  <%# Will only raise when some error occour %>
-  <% if @todo_list.errors.any?%>
-    <p>You must correct the erros in order to continue:</p>
-    <% @todo_list.errors.full_messages.each do |message|  %>
-      <p><%= message %></p>
-    <% end %>
-  <% end %>
-</div>
+<%= render 'form', todo_list: @todo_list %>
