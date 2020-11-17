@@ -254,7 +254,7 @@ DEPENDENCIES
   spring
   spring-watcher-listen (~> 2.0.0)
   sqlite3 (~> 1.4)
-  stimulus_reflex (~> 3.2)
+  stimulus_reflex (~> 3.3)
   turbolinks (~> 5)
   tzinfo-data
   view_component
