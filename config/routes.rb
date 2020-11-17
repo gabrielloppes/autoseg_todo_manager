@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     #  PUT atualiza um recurso existente
     put :make_it_public
     put :make_it_private
-    resources :taks, only: [:create, :update :destroy] do
+    resources :tasks, only: [:create, :update, :destroy] do
       #  PUT atualiza um recurso existente
       put :set_it_done
       put :set_it_undone
