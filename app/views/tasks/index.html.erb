@@ -3,13 +3,19 @@
 <table>
   <tr>
     <th>Description</th>
-    <th>Status</th>
+    <th>Completed</th>
+    <th>Completed at</th>
+    <th>Todo list</th>
+    <th></th>
+    <th></th>
+    <th></th>
   </tr>
 
 <% @tasks.each do |task| %>
   <tr>
     <td><%= task.description %></td>
-    <td><%= task.status %></td>
+    <td><%= task.completed %></td>
+    <td><%= task.completed_at %></td>
     <td><%= task.todo_list %></td>
     <td><%= link_to 'Show', [task.todo_list, task] %></td>
     <td><%= link_to 'Edit', edit_todo_list_task_path(task.todo_list, task) %></td>
@@ -17,4 +23,7 @@
   </tr>
 <% end %>
 </table>
+
+<br />
+
 <%= link_to 'New Task', new_todo_list_task_path(params[:todo_list_id]) %>

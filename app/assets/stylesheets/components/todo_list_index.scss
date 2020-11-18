@@ -1,0 +1,48 @@
+.index-header {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-rows: 100px;
+  margin: 0px 400px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.card-container-index {
+  display: flex;
+  align-items: center;
+  margin: 0 400px 8px 400px;
+  background: white;
+  padding: 8px 16px;
+  border: 1px solid rgb(235,235,235);
+}
+
+.card-container-index .card-items-index {
+  flex-grow: 1;
+  padding: 0 24px;
+}
+
+.card-container-index p {
+  margin: 0;
+  line-height: 1.4;
+}
+
+.card-container-index h2 {
+  color: #999999;
+  font-weight: bold;
+}
+.card-container-index .card-actions-index {
+  display: flex;
+}
+
+.card-container-index .card-actions-index a {
+  color: #999999;
+  margin-left: 16px;
+  font-size: 14px;
+}
+
+.card-items-index {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: space-between;
+}

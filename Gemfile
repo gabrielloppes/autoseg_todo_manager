@@ -23,6 +23,7 @@ gem 'jbuilder', '~> 2.7'
 # gem 'bcrypt', '~> 3.1.7'
 
 gem 'devise'
+gem 'font-awesome-sass'
 gem "view_component", require: "view_component/engine"
 
 # Use Active Storage variant

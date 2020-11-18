@@ -1,0 +1,16 @@
+@import "font-awesome-sprockets";
+@import "font-awesome";
+@import "components/index";
+
+// Import Google Fonts
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&display=swap');
+
+* {
+  padding: 0;
+  margin: 0;
+  font-family: Poppins;
+}
+
+ol, ul, li {
+  list-style: none;
+}

@@ -1,5 +1,6 @@
-<%= link_to 'Back', @todo_list, class: 'back_button' %>
-<div class="edit">
-  <h2>Editing Task</h2>
-  <%= render 'form' %>
-</div>
+<h1>Editing task</h1>
+
+<%= render 'form' %>
+
+<%= link_to 'Show', [@task.todo_list, @task] %> |
+<%= link_to 'Back', todo_list_tasks_path(@task.todo_list) %>
