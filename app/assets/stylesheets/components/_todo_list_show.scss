@@ -17,10 +17,33 @@
 
 .show_title_wrapper h1 {
   grid-area: title;
-  font-family: Poppins;
+  font-family: Montserrat;
   font-weight: 700;
   color: #000;
 }
+
+// BADGES
+.show_title_wrapper h1 .badge {
+  font-size: 15px;
+  border-radius: 30px;
+  color: #fff;
+  font-family: Montserrat;
+  font-weight: 600;
+  padding: 5px 20px;
+}
+
+.show_title_wrapper h1 .badge-not-started {
+  background-color: #4b4852;
+}
+
+.show_title_wrapper h1 .badge-complete {
+  background-color: #0BF4B5;
+}
+
+.show_title_wrapper h1 .badge-in-progress {
+  background-color: #5ABDD2;
+}
+// END OF BADGES
 
 .completed-tasks {
   grid-area: task;
@@ -36,23 +59,80 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #6E41E2;
+  background: #6e41e2;
   border-radius: 4px;
   color: #fff;
-  font-family: Poppins;
+  font-family: Montserrat;
   font-weight: 700;
 }
 
+// PROGRESS BAR SECTION
 #progress-bar {
-  background-color: #EFF0F7;
+  background-color: #eff0f7;
   border-radius: 6px;
   margin: 20px 400px;
 }
 
-#progress-bar>div {
-  background-color: #5F2EEA;
+#progress-bar > div {
+  background-color: #5f2eea;
   height: 20px;
   border-radius: 6px;
+}
+
+// DONE AND UNDONE ICONS
+
+// This is for the done tasks
+.btn_check_info {
+  width: 30px;
+  height: 30px;
+  background-color: #00ff4c;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.2s ease;
+}
+
+.btn_check_info i {
+  color: #fff;
+}
+
+// This is for undone tasks
+.btn_check_undo {
+  width: 30px;
+  height: 30px;
+  background-color: #3b4256;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.2s ease;
+}
+
+// TASK FORM
+form.add_task_form {
+  margin: 20px 400px;
+}
+
+form.add_task_form input[type='text'] {
+  min-width: 970px;
+  height: 44px;
+}
+
+form.add_task_form input[type='submit'] {
+  width: 124px;
+  height: 44px;
+  background: #6e41e2;
+  color: #fff;
+  font-family: Montserrat;
+  font-weight: 700;
+  border-radius: 4px;
+  margin-left: 10px;
+  outline: none;
+  border: none;
+}
+
+.btn_check_undo i {
+  color: #fff;
+  padding: 6px;
 }
 
 // CARDS
@@ -66,15 +146,15 @@
   border-radius: 4px;
 }
 
-
-.btn_check_info i {
-  color: #6E41E2;
-  font-size: 1.8rem;
-}
-
 .show_task_container .show_task_item {
   flex-grow: 1;
   padding: 0 24px;
+}
+
+.show_task_item h3 span {
+  text-decoration: line-through;
+  color: #5f2eea;
+  opacity: 50%;
 }
 
 .show_task_container p {
@@ -83,8 +163,8 @@
 }
 
 .show_task_container h3 {
-  color: #6E41E2;
-  font-family: Poppins;
+  color: #6e41e2;
+  font-family: Montserrat;
   font-weight: 700;
 }
 .show_task_container .show_task_actions {

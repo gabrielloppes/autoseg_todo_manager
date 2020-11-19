@@ -43,6 +43,7 @@ class Task < ApplicationRecord
   #   status == 'not-started'
   # end
 
+  # Esse scope retornará as tasks que estão como completas
   scope :completed, -> do
     where(completed: true)
   end

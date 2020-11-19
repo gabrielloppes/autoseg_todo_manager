@@ -25,7 +25,7 @@ class TasksController < ApplicationController
     @task = @todo_list.tasks.build(task_params)
 
     if @task.save
-      redirect_to([@task.todo_list, @task], notice: 'Task was successfully created.')
+      redirect_to(@task.todo_list)
     else
       render action: 'new'
     end

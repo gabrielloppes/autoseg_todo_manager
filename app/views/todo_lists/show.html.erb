@@ -1,27 +1,55 @@
-<header class="show-header">
-  <div class="show_title_wrapper">
-    <h1><%= @todo_list.title %></h1>
-    <p class="completed-tasks"><small><%= @todo_list.percent_complete %> (<%= @todo_list.completed_tasks %> / <%= @todo_list.total_tasks %> Tasks )</small></p>
-    <%= link_to 'Edit', edit_todo_list_path(@todo_list), class: 'show_edit_btn' %>
-  </div>
-</header>
-<div id="progress-bar">
-  <div class="progress-bar" role="progressbar" style="width: <%= @todo_list.percent_complete %>%" aria-valuenow="<%= @todo_list.percent_complete %>" aria-valuemin="0" aria-valuemax="100">
-  </div>
-</div>
-
-<main>
-  <% @todo_list.tasks.each do |task| %>
-    <div class="show_task_container">
-      <div class="show_task_item">
-        <h3><%= task.description %></h3>
-      </div>
-      <%= link_to '#', class: 'btn_check_info' do %>
-        <i class="fas fa-check-square"></i>
-      <% end %>
-      <div class="show_task_actions">
-        <%# Done btn goes here %>
-      </div>
+<div class="show_container">
+  <header class="show-header">
+    <div class="show_title_wrapper">
+      <h1>
+        <b><%= @todo_list.title %></b>
+        <span class="badge badge-<%= @todo_list.badge_color %>"><%= @todo_list.status %></span>
+      </h1>
+      <p class="completed-tasks"><small><%= @todo_list.percent_complete %> ( <%= @todo_list.completed_tasks %> / <%= @todo_list.total_tasks %> Tasks )</small></p>
+      <%= link_to 'Edit', edit_todo_list_path(@todo_list), class: 'show_edit_btn' %>
     </div>
+  </header>
+  <div id="progress-bar">
+    <div class="progress-bar" role="progressbar" style="width: <%= @todo_list.percent_complete %>%" aria-valuenow="<%= @todo_list.percent_complete %>" aria-valuemin="0" aria-valuemax="100">
+    </div>
+  </div>
+  <%# Input for new task %>
+  <%= form_for([@todo_list, @task]) do |f| %>
+    <form class="add_task_form">
+      <%= f.text_field :description, class: 'add_task_field', placeholder: 'Enter task name' %>
+      <%= f.submit "Add", class: 'add_task_btn' %>
+    </form>
   <% end %>
-</main>
+
+  <main>
+    <% @todo_list.tasks.each do |task| %>
+
+      <% if task.completed? %>
+        <div class="show_task_container">
+          <div class="show_task_item">
+            <h3><span><%= task.description %></span></h3>
+          </div>
+          <%= link_to '#', class: 'btn_check_undo', data: { reflex: 'click->Task#mark_incomplete', id: task.id } do %>
+            <i class="fas fa-times"></i>
+          <% end %>
+
+          <div class="show_task_actions">
+            <%# Done btn goes here %>
+          </div>
+        </div>
+      <% else %>
+        <div class="show_task_container">
+          <div class="show_task_item">
+            <h3><%= task.description %></h3>
+          </div>
+          <%= link_to '#', class: 'btn_check_info', data: { reflex: 'click->Task#mark_complete', id: task.id } do %>
+            <i class="fas fa-check"></i>
+          <% end %>
+          <div class="show_task_actions">
+            <%# Done btn goes here %>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </main>
+</div>
