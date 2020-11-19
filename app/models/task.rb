@@ -42,4 +42,8 @@ class Task < ApplicationRecord
   # def not_started?
   #   status == 'not-started'
   # end
+
+  scope :completed, -> do
+    where(completed: true)
+  end
 end

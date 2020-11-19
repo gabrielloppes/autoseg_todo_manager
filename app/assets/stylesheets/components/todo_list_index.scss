@@ -3,8 +3,7 @@
   grid-template-columns: 1fr auto;
   grid-template-rows: 100px;
   margin: 0px 400px;
-  align-items: center;
-  justify-content: space-between;
+  
 }
 
 .card-container-index {
@@ -31,13 +30,23 @@
   font-weight: bold;
 }
 .card-container-index .card-actions-index {
+  opacity: 0;
   display: flex;
+  transition: ease .3s;
+}
+
+.card-container-index:hover .card-actions-index {
+  opacity: 1;
 }
 
 .card-container-index .card-actions-index a {
   color: #999999;
   margin-left: 16px;
   font-size: 14px;
+}
+
+.card-container-index .card-actions-index a:hover {
+  color: #555555;
 }
 
 .card-items-index {

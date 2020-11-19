@@ -1,15 +1,27 @@
-<p id="notice"><%= notice %></p>
+<header class="show-header">
+  <div class="show_title_wrapper">
+    <h1><%= @todo_list.title %></h1>
+    <p class="completed-tasks"><small><%= @todo_list.percent_complete %> (<%= @todo_list.completed_tasks %> / <%= @todo_list.total_tasks %> Tasks )</small></p>
+    <%= link_to 'Edit', edit_todo_list_path(@todo_list), class: 'show_edit_btn' %>
+  </div>
+</header>
+<div id="progress-bar">
+  <div class="progress-bar" role="progressbar" style="width: <%= @todo_list.percent_complete %>%" aria-valuenow="<%= @todo_list.percent_complete %>" aria-valuemin="0" aria-valuemax="100">
+  </div>
+</div>
 
-<p>
-  <strong>Title:</strong>
-  <%= @todo_list.title %>
-</p>
-<ul>
+<main>
   <% @todo_list.tasks.each do |task| %>
-    <%= task.description %>
+    <div class="show_task_container">
+      <div class="show_task_item">
+        <h3><%= task.description %></h3>
+      </div>
+      <%= link_to '#', class: 'btn_check_info' do %>
+        <i class="fas fa-check-square"></i>
+      <% end %>
+      <div class="show_task_actions">
+        <%# Done btn goes here %>
+      </div>
+    </div>
   <% end %>
-  
-</ul>
-
-<%= link_to 'Edit', edit_todo_list_path(@todo_list) %> |
-<%= link_to 'Back', todo_lists_path %>
+</main>

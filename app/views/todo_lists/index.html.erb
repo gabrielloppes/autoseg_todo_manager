@@ -9,6 +9,9 @@
       <div class="card-items-index">
         <h2><%= todo_list.title %></h2>
         <div class="card-actions-index">
+          <%= link_to @todo_list do %>
+            <i class="far fa-eye"></i>
+          <% end %>
           <%= link_to edit_todo_list_path(todo_list) do %>
             <i class="fas fa-pencil-alt"></i>
           <% end %>
@@ -20,11 +23,3 @@
     </div>
   <% end %>
 </main>
-
-
-
-
-
-
-
-
