@@ -18,12 +18,13 @@ class TodoList < ApplicationRecord
     end
   end
   
-  # Retorna a porcentagem total da tarefa
+  # Retorna a porcentagem da tarefa
   def percent_complete
     return 0 if total_tasks == 0
     (100 * completed_tasks.to_f / total_tasks).round(1)
   end
   
+  # Retorna o total de tasks completas
   def completed_tasks
     @completed_tasks ||= tasks.completed.count
   end
