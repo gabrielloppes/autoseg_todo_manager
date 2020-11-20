@@ -20,6 +20,18 @@
   font-family: Montserrat;
   font-weight: 700;
   color: #000;
+  display: flex;
+  align-items: center;
+}
+
+.show_back_btn {
+  font-size: 20px;
+  margin-right: 20px;
+  color: #5f2eea;
+}
+
+.show_title_wrapper span {
+  margin-left: 20px;
 }
 
 // BADGES
@@ -41,7 +53,7 @@
 }
 
 .show_title_wrapper h1 .badge-in-progress {
-  background-color: #5ABDD2;
+  background-color: #F4B740;
 }
 // END OF BADGES
 
@@ -85,7 +97,7 @@
 .btn_check_info {
   width: 30px;
   height: 30px;
-  background-color: #00ff4c;
+  background-color: #F4B740;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -100,7 +112,7 @@
 .btn_check_undo {
   width: 30px;
   height: 30px;
-  background-color: #3b4256;
+  background-color: #0BF4B5;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -108,27 +120,27 @@
 }
 
 // TASK FORM
-form.add_task_form {
-  margin: 20px 400px;
-}
+// form.add_task_form {
+//   margin: 20px 400px;
+// }
 
-form.add_task_form input[type='text'] {
-  min-width: 970px;
-  height: 44px;
-}
+// form.add_task_form input[type='text'] {
+//   min-width: 970px;
+//   height: 44px;
+// }
 
-form.add_task_form input[type='submit'] {
-  width: 124px;
-  height: 44px;
-  background: #6e41e2;
-  color: #fff;
-  font-family: Montserrat;
-  font-weight: 700;
-  border-radius: 4px;
-  margin-left: 10px;
-  outline: none;
-  border: none;
-}
+// form.add_task_form input[type='submit'] {
+//   width: 124px;
+//   height: 44px;
+//   background: #6e41e2;
+//   color: #fff;
+//   font-family: Montserrat;
+//   font-weight: 700;
+//   border-radius: 4px;
+//   margin-left: 10px;
+//   outline: none;
+//   border: none;
+// }
 
 .btn_check_undo i {
   color: #fff;
