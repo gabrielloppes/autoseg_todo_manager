@@ -1,9 +1,9 @@
-@import "font-awesome-sprockets";
-@import "font-awesome";
-@import "components/index";
+@import 'font-awesome-sprockets';
+@import 'font-awesome';
+@import 'components/index';
 
 // Import Google Fonts
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=IBM+Plex+Mono:wght@500;600;700&display=swapdisplay=swap');
 
 * {
   padding: 0;
@@ -12,7 +12,9 @@
   box-sizing: border-box;
 }
 
-ol, ul, li {
+ol,
+ul,
+li {
   list-style: none;
 }
 
@@ -20,6 +22,7 @@ a {
   text-decoration: none;
 }
 
-body, html {
-  background-color: #F8F8F8;
+body,
+html {
+  background-color: #eff0f3;
 }

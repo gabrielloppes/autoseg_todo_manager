@@ -26,25 +26,27 @@
 
   <main>
     <% @todo_list.tasks.each do |task| %>
-
-      <% if task.completed? %>
-        <div class="show_task_container">
-          <div class="show_task_item">
-            <h3><span><%= task.description %></span></h3>
+      <%# Verifica se a task existe no banco de dados, assim, previne-se que uma 'task fantasma' seja criada %>
+      <% if task.persisted? %>
+        <% if task.completed? %>
+          <div class="show_task_container">
+            <div class="show_task_item">
+              <h3><span><%= task.description %></span></h3>
+            </div>
+            <%= link_to '#', class: 'btn_check_undo', data: { reflex: 'click->Task#mark_incomplete', id: task.id } do %>
+              <i class="fas fa-check"></i>
+            <% end %>
           </div>
-          <%= link_to '#', class: 'btn_check_undo', data: { reflex: 'click->Task#mark_incomplete', id: task.id } do %>
-            <i class="fas fa-check"></i>
-          <% end %>
-        </div>
-      <% else %>
-        <div class="show_task_container">
-          <div class="show_task_item">
-            <h3><%= task.description %></h3>
+        <% else %>
+          <div class="show_task_container">
+            <div class="show_task_item">
+              <h3><%= task.description %></h3>
+            </div>
+            <%= link_to '#', class: 'btn_check_info', data: { reflex: 'click->Task#mark_complete', id: task.id } do %>
+              <i class="fas fa-undo-alt"></i>
+            <% end %>
           </div>
-          <%= link_to '#', class: 'btn_check_info', data: { reflex: 'click->Task#mark_complete', id: task.id } do %>
-            <i class="fas fa-undo-alt"></i>
-          <% end %>
-        </div>
+        <% end %>
       <% end %>
     <% end %>
   </main>

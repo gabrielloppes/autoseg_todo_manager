@@ -6,18 +6,14 @@
 
   <main class="index_main_wrapper">
     <% @todo_lists.each do |todo_list| %>
-        <div class="index_card_wrapper">
-        <%= link_to todo_list do %>
-          <h1 class="index_title_card_intro">
-            <%= todo_list.title %>
-            <span class="badge badge-<%= todo_list.badge_color %>"><%= todo_list.status %></span>
-          </h1>
-          <p class="completed-tasks"><small><%= todo_list.percent_complete %> ( <%= todo_list.completed_tasks %> / <%= todo_list.total_tasks %> Tasks )</small></p>
-          <%= link_to todo_list, method: :delete, data: { confirm: 'Are you sure?' } do %>
-              <i class="fas fa-trash"></i>
-          <% end %>
+      <div class="index_card_item">
+        <h1><%= todo_list.title %></h1>
+        <span class="badge badge-<%= todo_list.badge_color %>"><%= todo_list.status %></span>
+        <p class="completed-tasks"><small><%= todo_list.percent_complete %> ( <%= todo_list.completed_tasks %> / <%= todo_list.total_tasks %> Tasks )</small></p>
+        <%= link_to todo_list, method: :delete, data: { confirm: 'Are you sure?' }, class: 'index_delete_btn' do %>
+          <i class="fas fa-trash"></i>
         <% end %>
-        </div>
+      </div>
     <% end %>
   </main>
 </div>

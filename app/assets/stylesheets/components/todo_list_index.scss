@@ -26,21 +26,54 @@
 .index_title_card_intro {
   display: flex;
   align-items: center;
+  justify-content: space-between;
 }
 
 .index_title_card_intro span {
   margin-left: 20px;
 }
 
-.index_card_wrapper {
+.index_card_item {
   background: #fff;
-  border: 2px solid #DDDDDD;
   padding: 20px;
   border-radius: 4px;
 }
 
-.index_card_wrapper h1 {
+.index_card_item h1 {
   color: #4b4852;
+}
+
+// CARD ITEM GRID
+.index_card_item {
+  height: 240px;
+  background: #fff;
+  display: grid;
+  grid-template-rows: 40px auto 30px;
+  grid-template-columns: auto 140px;
+  grid-template-areas:
+    'title badge'
+    'none none'
+    'task delete';
+}
+
+.index_card_item .index_title_card_intro h1 {
+  grid-area: title;
+}
+
+.index_card_item span {
+  grid-area: badge;
+}
+
+// END OF CARD ITEM GRID
+
+.index_card_item p {
+  font-family: Montserrat;
+  color: #4b4852;
+  font-weight: 600;
+}
+
+.index_card_container {
+  height: 240px;
 }
 
 .index_header {
@@ -53,74 +86,28 @@
 }
 
 // BADGES
-.index_card_wrapper h1 .badge {
+.index_card_item .badge {
   font-size: 15px;
-  border-radius: 30px;
+  border-radius: 4px;
   color: #fff;
   font-family: Montserrat;
-  font-weight: 600;
+  font-weight: 700;
   padding: 5px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.index_card_wrapper h1 .badge-not-started {
+// Badge Colors
+.index_card_item .badge-not-started {
   background-color: #4b4852;
 }
 
-.index_card_wrapper h1 .badge-complete {
+.index_card_item .badge-complete {
   background-color: #0bf4b5;
 }
 
-.index_card_wrapper h1 .badge-in-progress {
+.index_card_item .badge-in-progress {
   background-color: #f4b740;
 }
 // END OF BADGES
-
-.card-container-index {
-  display: flex;
-  align-items: center;
-  margin: 0 400px 8px 400px;
-  background: white;
-  padding: 8px 16px;
-  border: 1px solid rgb(235, 235, 235);
-}
-
-.card-container-index .card-items-index {
-  flex-grow: 1;
-  padding: 0 24px;
-}
-
-.card-container-index p {
-  margin: 0;
-  line-height: 1.4;
-}
-
-.card-container-index h2 {
-  color: #999999;
-  font-weight: bold;
-}
-.card-container-index .card-actions-index {
-  opacity: 0;
-  display: flex;
-  transition: ease 0.3s;
-}
-
-.card-container-index:hover .card-actions-index {
-  opacity: 1;
-}
-
-.card-container-index .card-actions-index a {
-  color: #999999;
-  margin-left: 16px;
-  font-size: 14px;
-}
-
-.card-container-index .card-actions-index a:hover {
-  color: #555555;
-}
-
-.card-items-index {
-  display: flex;
-  align-items: center;
-  width: 100%;
-  justify-content: space-between;
-}

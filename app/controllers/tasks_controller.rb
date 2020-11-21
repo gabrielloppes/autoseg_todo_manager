@@ -1,4 +1,5 @@
 class TasksController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_todo_list
   before_action :set_task, only: [:show, :edit, :update, :destroy]
 
@@ -43,8 +44,7 @@ class TasksController < ApplicationController
   
   def destroy
     @task.destroy
-
-    redirect_to todo_list_tasks_url(@todo_list)
+    redirect_to @todo_list
   end
 
   private
