@@ -4,9 +4,6 @@ class TodoList < ApplicationRecord
   
   # Título da lista deve existir
   validates :title, presence: { message: "Title can't be blank" }
-
-  # Rejeitará a criação de tasks se estiverem com a descrição vazia, desta maneira, imperdirá a criação de uma 'task fantasma' que poderia ocorrer.
-  accepts_nested_attributes_for :tasks, allow_destroy: true, reject_if: proc { |att| att['description'].blank? }
   
   # Verifica o status das tasks
   def status

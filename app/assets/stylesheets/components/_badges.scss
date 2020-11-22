@@ -1,0 +1,50 @@
+// LIST INDEX PAGE BADGES
+.index_card_item .badge {
+  font-size: 16px;
+  border-radius: 5px;
+  color: #fff;
+  font-family: IBM Plex Sans;
+  font-weight: 700;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+// Badge Colors
+.index_card_item .badge-complete {
+  background-color: #0cdac6;
+}
+
+.index_card_item .badge-in-progress {
+  background-color: #c52cee;
+}
+
+.index_card_item .badge-not-started {
+  background-color: #f2b05c;
+}
+
+// LIST SHOW PAGE BADGES
+.show_title_wrapper h1 .badge {
+  font-size: 16px;
+  border-radius: 5px;
+  color: #fff;
+  font-family: IBM Plex Sans;
+  font-weight: 700;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.show_title_wrapper h1 .badge-complete {
+  background-color: #0cdac6;
+}
+
+.show_title_wrapper h1 .badge-in-progress {
+  background-color: #c52cee;
+}
+
+.show_title_wrapper h1 .badge-not-started {
+  background-color: #f2b05c;
+}

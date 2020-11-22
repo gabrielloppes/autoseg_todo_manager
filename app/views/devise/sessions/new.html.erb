@@ -5,12 +5,10 @@
       <h2>Log in</h2>
       <section class="login-fields">
         <div class="email-field">
-          <%= f.label :email %>
-          <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: 'Enter your e-mail' %>
         </div>
         <div class="password-field">
-          <%= f.label :password %><br />
-          <%= f.password_field :password, autocomplete: "current-password" %>
+          <%= f.password_field :password, autocomplete: "current-password", placeholder: 'Enter your password' %>
         </div>
       </section>
       

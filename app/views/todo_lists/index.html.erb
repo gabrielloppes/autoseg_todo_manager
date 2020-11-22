@@ -1,8 +1,18 @@
 <div class="index_wrapper">
   <header class="index_header">
-    <%= image_tag ('disable.svg') %>
-    <%= link_to '+ New List', new_todo_list_path, class: 'new_task_btn' %>
+    <h1 class="logo">Tasks</h1>
+    <nav class="index_nav_container">
+      <ul>
+        <%= link_to destroy_user_session_path, method: :delete do %>
+          <i class="fas fa-power-off"></i>
+        <% end %>
+      </ul>
+    </nav>
   </header>
+  <section class="new_list_section">
+    <h2>My lists</h2>
+    <%= link_to '+ New List', new_todo_list_path, class: 'new_task_btn' %>
+  </section>
 
   <main class="index_main_wrapper">
     <% @todo_lists.each do |todo_list| %>

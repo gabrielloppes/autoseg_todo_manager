@@ -2,12 +2,37 @@
 .index_wrapper {
   display: grid;
   grid-template-columns: 1fr auto;
-  grid-template-rows: 150px 1fr;
+  grid-template-rows: 100px 100px 1fr;
   grid-template-areas:
-    'header header header'
-    // 'user user user'
-    'main main main';
+    'header header'
+    'new_list new_list'
+    'main main';
   height: 100vh;
+}
+
+.index_header {
+  grid-area: header;
+  padding: 30px;
+  align-items: center;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  background: #FFF;
+}
+
+.index_header h1 {
+  max-width: 200px;
+}
+
+.index_header .index_nav_container ul {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.index_header .index_nav_container ul a {
+  display: block;
+  color: #4b4852;
+  font-size: 1.7rem;
+  margin-right: 20px;
 }
 
 .index_main_wrapper {
@@ -27,20 +52,6 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-}
-
-.new_task_btn {
-  background: #6200ee;
-  width: 113px;
-  height: 36px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: none;
-  border-radius: 4px;
-  font-family: IBM Plex Mono;
-  font-weight: 700;
-  color: #fff;
 }
 
 .index_delete_btn {
@@ -85,7 +96,7 @@
 
 .index_card_item h1 {
   grid-area: title;
-  font-family: IBM Plex Mono;
+  font-family: IBM Plex Sans;
   font-weight: 700;
 }
 
@@ -96,7 +107,7 @@
 // END OF CARD ITEM GRID
 
 .index_card_item p {
-  font-family: IBM Plex Mono;
+  font-family: IBM Plex Sans;
   color: #4b4852;
   font-weight: 700;
 }
@@ -105,38 +116,17 @@
   height: 240px;
 }
 
-.index_header {
+section.new_list_section {
+  grid-area: new_list;
+  padding: 30px;
   display: grid;
-  grid-template-columns: 1fr auto;
-  // padding: 20px;
-  align-self: center;
-  padding: 20px;
-  margin: 30px;
-}
-
-// BADGES
-.index_card_item .badge {
-  font-size: 15px;
-  border-radius: 4px;
-  color: #fff;
-  font-family: Montserrat;
-  font-weight: 700;
-  padding: 5px 20px;
-  display: flex;
+  margin-right: 20px;
   align-items: center;
-  justify-content: center;
+  grid-template-columns: 1fr auto;
 }
 
-// Badge Colors
-.index_card_item .badge-not-started {
-  background-color: #4b4852;
+section.new_list_section h2 {
+  font-family: IBM Plex Sans;
+  font-weight: 700;
+  color: #4b4852;
 }
-
-.index_card_item .badge-complete {
-  background-color: #0bf4b5;
-}
-
-.index_card_item .badge-in-progress {
-  background-color: #f4b740;
-}
-// END OF BADGES

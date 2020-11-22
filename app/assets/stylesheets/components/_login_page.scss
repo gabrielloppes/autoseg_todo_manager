@@ -18,15 +18,15 @@
   width: 450px;
 }
 
-.new_session_logo {
-  grid-area: right;
-  grid-row: 1;
-  font-family: Poppins;
-  align-self: center;
-  justify-self: flex-end;
-  padding: 30px 80px 0 0;
-  color: #000;
-}
+// .new_session_logo {
+//   grid-area: right;
+//   grid-row: 1;
+//   font-family: Poppins;
+//   align-self: center;
+//   justify-self: flex-end;
+//   padding: 30px 80px 0 0;
+//   color: #000;
+// }
 
 .new_user {
   width: 750px;
@@ -45,10 +45,6 @@
   grid-area: left;
 }
 
-.login-fields label {
-  font-family: Poppins;
-}
-
 .login-fields .email-field,
 .password-field {
   margin: 20px 0;
@@ -63,13 +59,13 @@
 }
 
 .new_session_wrapper h2 {
-  font-family: Poppins;
+  font-family: IBM Plex Sans;
 }
 
 .new_session_actions {
   display: flex;
   justify-content: space-between;
-  font-family: Poppins;
+  font-family: IBM Plex Sans;
   margin: 10px 0;
 }
 
@@ -79,10 +75,12 @@
   outline: none;
   border: none;
   border-radius: 5px;
-  background-color: #04c35c;
+  background: #0f56b3;
+  box-shadow: 0px 1px 2px rgba(15, 86, 179, 0.2),
+    0px 2px 4px rgba(15, 86, 179, 0.2);
   color: #fff;
-  font-family: 'Poppins';
-  font-weight: 600;
+  font-family: 'IBM Plex Sans';
+  font-weight: 700;
   font-size: 1.3rem;
   cursor: pointer;
 }
@@ -95,16 +93,17 @@ input[type='password'] {
   border-radius: 5px;
   height: 50px;
   padding: 20px;
-  font-family: 'Poppins';
-  font-weight: 400;
-  color: #000;
+  font-family: IBM Plex Sans;
+  // font-weight: 400;
+  color: #4b4852;
 }
 
-.sign_up_link {
+.sign_up_link p {
   grid-area: right;
   grid-row: 3;
   align-self: center;
   justify-self: center;
-  font-family: Poppins;
-  color: #000;
+  font-family: IBM Plex Sans;
+  font-weight: 700;
+  color: #4b4852;
 }

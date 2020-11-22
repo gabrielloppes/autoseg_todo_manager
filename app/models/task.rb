@@ -1,6 +1,8 @@
 class Task < ApplicationRecord
   belongs_to :todo_list
 
+  validates :description, presence: { message: "Description can't be blank" }
+
   before_destroy do
     @todo_list = self.todo_list
   end
