@@ -103,7 +103,7 @@ class TodoListsController < ApplicationController
 
     # Permite apenas parâmetros confiáveis
     def todo_list_params
-      params.require(:todo_list).permit(:title)
+      params.require(:todo_list).permit(:title, :status, tasks_attributes: [:id, :description, :completed_at])
     end
 
     def set_todo_list_id
