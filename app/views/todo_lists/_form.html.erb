@@ -12,6 +12,13 @@
   <% end %>
 
   <div class="field">
+    <%= form.label(:status, "Private") %>
+    <%= form.radio_button(:status, :personal, checked: true) %>
+    <%= form.label(:status, "Public") %>
+    <%= form.radio_button(:status, :shareable) %>
+  </div>
+
+  <div class="field">
     <%= form.label :title %>
     <%= form.text_field :title %>
   </div>

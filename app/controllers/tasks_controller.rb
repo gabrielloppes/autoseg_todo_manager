@@ -4,22 +4,22 @@ class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy]
 
   
-  def index
-    @tasks = @todo_list.tasks
-  end
+  # def index
+  #   @tasks = @todo_list.tasks
+  # end
 
   
-  def show
-  end
+  # def show
+  # end
 
   
-  def new
-    @task = @todo_list.tasks.build
-  end
+  # def new
+  #   @task = @todo_list.tasks.build
+  # end
 
   
-  def edit
-  end
+  # def edit
+  # end
 
   
   def create
@@ -33,13 +33,13 @@ class TasksController < ApplicationController
   end
 
   
-  def update
-    if @task.update_attributes(task_params)
-      redirect_to([@task.todo_list, @task], notice: 'Task was successfully updated.')
-    else
-      render action: 'edit'
-    end
-  end
+  # def update
+  #   if @task.update_attributes(task_params)
+  #     redirect_to([@task.todo_list, @task], notice: 'Task was successfully updated.')
+  #   else
+  #     render action: 'edit'
+  #   end
+  # end
 
   
   def destroy

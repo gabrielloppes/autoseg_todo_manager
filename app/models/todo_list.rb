@@ -1,6 +1,8 @@
 class TodoList < ApplicationRecord
   belongs_to :user
   has_many :tasks, dependent: :destroy
+
+  enum status: { personal: 0, shareable: 5 }
   
   # Título da lista deve existir
   validates :title, presence: { message: "Title can't be blank" }

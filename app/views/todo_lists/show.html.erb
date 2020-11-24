@@ -6,6 +6,8 @@
           <i class="fas fa-arrow-left"></i>
         <% end %>
         <%= @todo_list.title %>
+        <%= link_to favorite_text, favorites_update_path(todo_list: @todo_list), id: 'favorite_link', remote: true  %>
+        <% end %>
         <span class="badge badge-<%= @todo_list.badge_color %>"><%= @todo_list.status %></span>
       </h1>
       <p class="completed-tasks"><small><%= @todo_list.percent_complete %> ( <%= @todo_list.completed_tasks %> / <%= @todo_list.total_tasks %> Tasks )</small></p>
@@ -18,10 +20,8 @@
   </div>
   <%# Input for new task %>
   <%= form_for([@todo_list, @task]) do |f| %>
-    <form class="add_task_form">
-      <%= f.text_field :description, class: 'add_task_field', placeholder: 'Enter task name' %>
-      <%= f.submit "+ Add", class: 'add_task_btn' %>
-    </form>
+    <%= f.text_field :description, class: 'add_task_field', placeholder: 'Enter task name' %>
+    <%= f.submit "+ Add", class: 'add_task_btn' %>
   <% end %>
 
   <main>

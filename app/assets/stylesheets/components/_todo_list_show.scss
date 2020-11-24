@@ -38,14 +38,15 @@
 
 // PROGRESS BAR SECTION
 #progress-bar {
-  background-color: #eff0f7;
+  background-color: #F2F3F5;
   margin: 20px 400px;
-  border-radius: 5px;
+  border-radius: 100px;
+  border: 1px solid #DDDDDD;
 }
 
 #progress-bar > div {
-  background-color: #5f2eea;
+  background-color: #8c65f6;
   height: 20px;
   transition: 0.5s ease;
-  border-radius: 5px;
+  border-radius: 100px;
 }

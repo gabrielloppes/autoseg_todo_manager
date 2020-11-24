@@ -18,7 +18,9 @@
     <% @todo_lists.each do |todo_list| %>
       <div class="index_card_container">
         <div class="index_card_item">
-          <h1><%= todo_list.title %></h1>
+          <%= link_to todo_list do %>
+            <h1><%= todo_list.title %></h1>
+          <% end %>
           <span class="badge badge-<%= todo_list.badge_color %>"><%= todo_list.status %></span>
           <p class="completed-tasks"><small><%= todo_list.percent_complete %> ( <%= todo_list.completed_tasks %> / <%= todo_list.total_tasks %> Tasks )</small></p>
           <%= link_to todo_list, method: :delete, data: { confirm: 'Are you sure?' }, class: 'index_delete_btn' do %>
