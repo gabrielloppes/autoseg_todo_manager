@@ -5,7 +5,7 @@
 
 <%= form_with model: @todo_list do |form| %>
   <div class="form">
-    <%= form.label(:status, "Pessoal") %>
+    <%= form.label(:status, "Privada") %>
     <%= form.radio_button(:status, :personal, checked: true) %>
     <%= form.label(:status, "Pública") %>
     <%= form.radio_button(:status, :shareable) %>

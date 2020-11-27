@@ -1,0 +1,44 @@
+#notice_wrapper {
+  position: absolute;
+  bottom: 16px;
+  right: 16px;
+  max-width: max-content;
+  z-index: 999;
+  font-family: IBM Plex Sans;
+  font-weight: 700;
+  background: #c4e7d0;
+  color: #176F2C;
+  p {
+    padding: 1.5rem;
+    letter-spacing: 1px;
+    display: flex;
+  }
+
+  svg {
+    fill: #176F2C;
+    margin-right: 5px;
+  }
+}
+
+#alert_wrapper {
+  position: absolute;
+  bottom: 16px;
+  right: 16px;
+  max-width: max-content;
+  z-index: 999;
+  font-family: IBM Plex Sans;
+  display: flex;
+  font-weight: 700;
+  background: #FFE3E6;
+  color: #9E1C23;
+  p {
+    padding: 1.5rem;
+    letter-spacing: 1px;
+    display: flex;
+  }
+
+  svg {
+    fill: #9E1C23;
+    margin-right: 5px;
+  }
+}

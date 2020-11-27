@@ -37,7 +37,7 @@ class TodoListsController < ApplicationController
     @todo_list = TodoList.new(todo_list_params)
     @todo_list.user = current_user
     if @todo_list.save
-      flash[:notice] = "Lista criada com sucesso"
+      flash[:notice] = "'#{@todo_list.title}', criada com sucesso"
       redirect_to @todo_list
     else
       render :new
@@ -55,6 +55,7 @@ class TodoListsController < ApplicationController
   def destroy
     @todo_list = current_user.todo_lists.find(params[:id])
     @todo_list.destroy
+    flash[:alert] = "'#{@todo_list.title}', deletada com sucesso"
     redirect_to todo_lists_path
   end
   
@@ -64,13 +65,13 @@ class TodoListsController < ApplicationController
   
   def make_public
     @todo_list.update(status: :shareable)
-    flash[:alert] = "'#{@todo_list.title}' é publica agora"
+    flash[:alert] = "'#{@todo_list.title}', agora é publica"
     redirect_to todo_list_path(@todo_list)
   end
   
   def make_personal
     @todo_list.update(status: :personal)
-    flash[:alert] = "'#{@todo_list.title}' é privada agora"
+    flash[:alert] = "'#{@todo_list.title}', agora é privada"
     redirect_to todo_list_path(@todo_list)
   end
   

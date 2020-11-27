@@ -11,7 +11,7 @@
           <%= link_to 'Listas',todo_lists_path, method: :get  %>
         </li>
         <li class="favorite_aside_nav_item">
-          <%= octicon "star", :height => 24 %>
+          <%= octicon "heart", :height => 24 %>
           <%= link_to 'Favoritos', favorites_path, method: :get %>
         </li>
         <li class="favorite_aside_nav_item">
@@ -26,10 +26,6 @@
     <h1><%= "#{current_user.name}, aqui estão os seus favoritos" %></h1>
   </header>
 
-
-
-
-
   <main class="favorite-main">
     <% current_user.favorites.each do |favorite| %>
       <div class="favorite-card-container">
@@ -38,10 +34,10 @@
             <%= link_to todo_list_path(favorite.todo_list) do %>
               <%= favorite.todo_list.title %>
             <% end %>
-            <i class="fas fa-star"></i>
+            <i class="fas fa-heart"></i>
           </h1>
           <% if favorite.todo_list.personal? %>
-            <small class="text-personal">Pessoal</small>
+            <small class="text-personal">Privada</small>
           <% elsif favorite.todo_list.shareable? %>
             <small class="text-public">Pública</small>
           <% end %>

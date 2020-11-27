@@ -10,7 +10,7 @@
           <%= link_to 'Listas',todo_lists_path, method: :get  %>
         </li>
         <li class="aside_nav_item">
-          <%= octicon "star", :height => 24 %>
+          <%= octicon "heart", :height => 24 %>
           <%= link_to 'Favoritos', favorites_path, method: :get %>
         </li>
         <li class="aside_nav_item">
@@ -33,11 +33,11 @@
           <h1>
             <%= link_to todo_list.title, todo_list_path(todo_list) %>
             <% if todo_list.favorite == true %>
-              <i class="fas fa-star"></i>
+              <i class="fas fa-heart"></i>
             <% end %>
           </h1>
           <% if todo_list.personal? %>
-            <small class="text-personal">Pessoal</small>
+            <small class="text-personal">Privada</small>
           <% elsif todo_list.shareable? %>
             <small class="text-public">Pública</small>
           <% end %>

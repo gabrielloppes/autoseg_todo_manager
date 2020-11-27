@@ -11,11 +11,28 @@
   </head>
 
   <body>
-    <p class="notice"><%= notice %></p>
+  <%# QUANDO FOR NOTICE %>
+  <% if notice %>
+    <div id="notice_wrapper">
+      <p class="notice">
+        <%= octicon "check-circle", :height => 24 %>
+        <%= notice %>
+      </p>
+    </div>
+  <%# QUANDO FOR ALERT %>
+  <% elsif alert %>
+    <div id="alert_wrapper">
+      <p class="alert">
+        <%= octicon "alert", :height => 24 %>
+        <%= alert %>
+      </p>
+    </div>
+  <% end %>
+  <%# <% if user_signed_in? %>
+    <%# <%= render "shared/navbar" %>
+  <%# <% end %>
+  
     
-    <%# <% if user_signed_in? %>
-      <%# <%= render "shared/navbar" %>
-    <%# <% end %>
     <%= yield %>
   </body>
 </html>

@@ -47,6 +47,10 @@
   transition: 0.2s ease;
 }
 
+.aside .aside_nav ul li.active a {
+  background: #0000ff;
+}
+
 .aside .aside_nav ul li svg {
   margin-right: 10px;
 }
@@ -123,7 +127,7 @@
 }
 
 .index-card-item h1 i {
-  color: gold;
+  color: red;
   font-size: 20px;
   margin-left: 5px;
 }

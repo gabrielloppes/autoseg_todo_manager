@@ -3,10 +3,32 @@
 // a relevant structure within app/javascript and only use these pack files to reference
 // that code so it'll be compiled.
 
-require("@rails/ujs").start()
-require("turbolinks").start()
-require("@rails/activestorage").start()
-require("channels")
+require('@rails/ujs').start();
+require('turbolinks').start();
+require('@rails/activestorage').start();
+require('channels');
+require('jquery')
+
+// QUANDO FOR NOTICE
+$(document).ready(function() {
+  setTimeout(function() {
+    $("#notice_wrapper").slideToggle("slow", function() {
+      $(this).remove();
+    }), 
+    $("#alert_wrapper").slideToggle("slow", function() {
+      $(this).remove();
+    })
+  }, 2500);
+});
+
+// // QUANDO FOR ALERT
+// $(document).ready(function() {
+//   setTimeout(function() {
+//     $("#alert_wrapper").fadeOut("slow", function() {
+//       $(this).remove();
+//     })
+//   }, 2500);
+// });
 
 
 // Uncomment to copy all static images under ../images to the output folder and reference
@@ -16,4 +38,4 @@ require("channels")
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
 
-import "controllers"
+import 'controllers';

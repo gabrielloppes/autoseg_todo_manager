@@ -47,6 +47,14 @@
   transition: 0.2s ease;
 }
 
+.favorite-aside .favorite_aside_nav ul li:active {
+  border-right: 2px solid transparent;
+}
+
+.favorite-aside .favorite_aside_nav ul li:hover:active {
+  border-right: 2px solid #0000ff;
+}
+
 .favorite-aside .favorite_aside_nav ul li svg {
   margin-right: 10px;
 }
@@ -138,8 +146,7 @@
 }
 
 .favorite-card-item h1 i {
-  grid-area: star;
-  color: gold;
+  color: red;
   font-size: 20px;
   margin-left: 5px;
 }

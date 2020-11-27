@@ -3,8 +3,8 @@
     <h1>Crie uma nova lista</h1>
     <%= form_with model: @todo_list do |form| %>
       <div class="form-new-container">
-        <%= form.label(:status, "Pessoal") %>
-        <%= form.radio_button(:status, :personal, checked: true, class:'mr-3') %>
+        <%= form.label(:status, "Privada") %>
+        <%= form.radio_button(:status, :personal, checked: true) %>
         <%= form.label(:status, "Pública") %>
         <%= form.radio_button(:status, :shareable) %>
       </div>
