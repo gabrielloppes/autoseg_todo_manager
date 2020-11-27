@@ -1,42 +1,32 @@
 // GRID DEFINITION
-.index-container {
+.favorite-container {
   display: grid;
   grid-template-rows: 200px 1fr;
   grid-template-areas:
-    'new_list'
+    'header'
     'main';
   height: 100vh;
 }
 // END OF GRID DEFINITION
 
-// NEW LIST SECTION
-.new_list {
+// HEADER SECTION
+.header-favorite {
   display: grid;
   grid-template-columns: 1fr auto;
-  grid-area: new_list;
+  grid-area: header;
   align-self: center;
   align-items: center;
   padding: 0 50px;
 }
 
-.new_list h1 {
+.header-favorite h1 {
   font-family: Poppins;
   font-weight: 700;
   font-size: 2rem;
 }
 
-.new_list .new_list_btn {
-  font-family: Poppins;
-  font-weight: 600;
-  color: #ffffff;
-  background: #0000ff;
-  padding: 10px 30px;
-  margin-right: 5px;
-}
-// END OF NEW LIST SECTION
-
-// MAIN SECTION
-.index-main {
+// MAIN SECTION GRID
+.favorite-main {
   grid-area: main;
   height: 100vh;
   display: grid;
@@ -47,45 +37,28 @@
   grid-auto-flow: dense;
   max-width: 100vw;
 }
-
-// END OF MAIN SECTION
+// END OF MAIN SECTION GRID
 
 // MAIN SECTION CARDS
-.index-card-item {
+.favorite-card-item {
   background: #fff;
   padding: 20px;
-  border: 2px solid #dddddd;
+  border: 2px solid #DDDDDD;
   border-radius: 4.73446px;
 }
 
-.text-personal,
-.text-public {
+.text-personal, .text-public {
   font-family: Poppins;
   color: #000000;
   width: max-content;
   height: max-content;
 }
 
-.index-card-item h1 a {
+.favorite-card-item h1 a {
   color: #4b4852;
 }
 
-.index-card-item h1 i {
-  color: gold;
-  font-size: 20px;
-  margin-left: 5px;
-}
-
-.index-card-item h1 {
-  grid-area: title;
-  font-family: IBM Plex Sans;
-  font-weight: 700;
-  max-width: max-content;
-  display: flex;
-  align-items: center;
-}
-
-.index-card-item {
+.favorite-card-item {
   height: 240px;
   background: #fff;
   display: grid;
@@ -97,24 +70,38 @@
     'badge delete delete';
 }
 
-.index-card-item .completed-tasks {
+.favorite-card-item .favorite-completed-tasks {
   grid-area: task;
   align-self: center;
   justify-self: end;
 }
 
+.favorite-card-item h1 {
+  grid-area: title;
+  font-family: IBM Plex Sans;
+  font-weight: 700;
+  max-width: max-content;
+  display: flex;
+  place-items: center;
+}
 
-.index-card-item span {
+.favorite-card-item h1 i {
+  color: gold;
+  font-size: 20px;
+  margin-left: 5px;
+}
+
+.favorite-card-item span {
   grid-area: badge;
 }
 
-.index-card-item p {
+.favorite-card-item p {
   font-family: IBM Plex Sans;
   color: #4b4852;
   font-weight: 700;
 }
 
-.index-card-container {
+.favorite-card-container {
   height: 240px;
 }
 // END OF MAIN CARDS

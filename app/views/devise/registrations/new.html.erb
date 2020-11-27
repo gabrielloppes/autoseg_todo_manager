@@ -5,20 +5,17 @@
       <%= render "devise/shared/error_messages", resource: resource %>
       <h2>Sign Up</h2>
       <section class="login-fields">
+        <div class="name-field">
+          <%= f.text_field :name, placeholder: 'Nome', autofocus: true %>
+        </div>
         <div class="email-field">
-          <%= f.label :email %>
-          <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+          <%= f.email_field :email, placeholder: 'Email', autocomplete: "email" %>
         </div>
         <div class="password-confirmation-field">
-          <%= f.label :password %>
-          <% if @minimum_password_length %>
-            <%= @minimum_password_length %> (characters minimum)
-          <% end %>
-          <%= f.password_field :password, autocomplete: "new-password" %>
+          <%= f.password_field :password,placeholder: 'Senha com mínimo de 6 caracteres' , autocomplete: "new-password" %>
         </div>
         <div class="password-field">
-          <%= f.label :password_confirmation %>
-          <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+          <%= f.password_field :password_confirmation, placeholder: 'Repita a senha', autocomplete: "new-password" %>
         </div>
       </section>
       <div class="new_session_sign_up_wrapper">

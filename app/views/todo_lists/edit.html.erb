@@ -1,6 +1,29 @@
-<h1>Editing Todo List</h1>
+<div class="edit_container">
+<header>
+  <h1><%= @todo_list.title %></h1>
+</header>
 
-<%= render 'form', todo_list: @todo_list %>
-
-<%= link_to 'Show', @todo_list %> |
-<%= link_to 'Back', todo_lists_path %>
+<%= form_with model: @todo_list do |form| %>
+  <div class="form">
+    <%= form.label(:status, "Pessoal") %>
+    <%= form.radio_button(:status, :personal, checked: true) %>
+    <%= form.label(:status, "Pública") %>
+    <%= form.radio_button(:status, :shareable) %>
+  </div>
+  <div class="form-group row">
+    <%= form.text_field :title, placeholder: 'title_field' %>
+  </div>
+  <!-- <% @todo_list.tasks.order(created_at: :desc).each do |task|  %>
+    <%= task.description %>
+    <%= link_to 'Deletar tarefa', todo_list_task_path(@todo_list, task), method: :delete, class: "btn_remove_task", data: { confirm: 'Tem certeza disso?' } %>
+  <% end %> -->
+      <%= form.submit 'Salvar', class: "btn_save_edit" %>
+  <% end %>
+  <% if @todo_list.errors.any?%>
+    <p>Por favor, corriga os erros para continuar:</p>
+    <% @todo_list.errors.full_messages.each do |message|  %>
+        <p><%= message %></p>
+  <% end %>
+<% end %>
+<%= link_to 'Voltar', todo_list_path(@todo_list), class:"btn_back" %>
+</div>

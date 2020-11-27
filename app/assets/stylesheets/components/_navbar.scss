@@ -1,0 +1,38 @@
+// NAV SECTION
+.index-nav {
+  grid-area: navbar;
+  padding: 30px 50px;
+  align-self: center;
+  background: #FFFFFF;
+  border-bottom: 1px solid #DDDDDD;
+}
+
+.index-nav nav {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: baseline;
+}
+
+.index-nav nav ul {
+  display: flex;
+  align-items: center;
+}
+
+.index-nav nav ul li a {
+  padding: 30px 15px;
+  position: relative;
+  font-family: Poppins;
+  color: #000000;
+  border-bottom: 2px solid transparent;
+  font-weight: 700;
+  transition: .3s ease;
+}
+
+.index-nav nav ul li a:hover {
+  border-bottom: 2px solid #0000FF;
+}
+
+.index-nav nav .logo {
+  max-width: 100px;
+}
+// END OF NAV SECTION

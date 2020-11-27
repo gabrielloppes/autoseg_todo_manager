@@ -1,50 +1,79 @@
 // LIST INDEX PAGE BADGES
-.index_card_item .badge {
-  font-size: 16px;
-  border-radius: 5px;
+.index-card-item .badge {
+  font-size: 14px;
+  border-radius: 39px;
   color: #fff;
   font-family: IBM Plex Sans;
   font-weight: 700;
-  padding: 10px 20px;
+  width: 150px;
+  height: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 // Badge Colors
-.index_card_item .badge-complete {
+.index-card-item .badge-complete {
   background-color: #36B368;
 }
 
-.index_card_item .badge-in-progress {
+.index-card-item .badge-in-progress {
   background-color: #513CCC;
 }
 
-.index_card_item .badge-not-started {
+.index-card-item .badge-not-started {
   background-color: #393B3F;
 }
 
 // LIST SHOW PAGE BADGES
-.show_title_wrapper h1 .badge {
-  font-size: 16px;
-  border-radius: 5px;
+.show-header h1 .badge {
+  font-size: 14px;
+  border-radius: 39px;
   color: #fff;
   font-family: IBM Plex Sans;
   font-weight: 700;
-  padding: 10px 20px;
+  width: 150px;
+  height: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.show_title_wrapper h1 .badge-complete {
+.show-header h1 .badge-complete {
   background-color: #36B368;
 }
 
-.show_title_wrapper h1 .badge-in-progress {
+.show-header h1 .badge-in-progress {
   background-color: #513CCC;
 }
 
-.show_title_wrapper h1 .badge-not-started {
+.show-header h1 .badge-not-started {
+  background-color: #393B3F;
+}
+
+// FAVORITE PAGE BADGES
+.favorite-card-item .badge {
+  font-size: 14px;
+  border-radius: 39px;
+  color: #fff;
+  font-family: IBM Plex Sans;
+  font-weight: 700;
+  width: 150px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+// Badge Colors
+.favorite-card-item .badge-complete {
+  background-color: #36B368;
+}
+
+.favorite-card-item .badge-in-progress {
+  background-color: #513CCC;
+}
+
+.favorite-card-item .badge-not-started {
   background-color: #393B3F;
 }

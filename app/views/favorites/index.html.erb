@@ -1,0 +1,29 @@
+
+<div class="favorite-container">
+  <header class="header-favorite">
+    <h1><%= "#{current_user.name}, aqui estão os seus favoritos" %></h1>
+  </header>
+  <main class="favorite-main">
+    <% current_user.favorites.each do |favorite| %>
+      <div class="favorite-card-container">
+        <div class="favorite-card-item">
+          <h1>
+            <%= link_to todo_list_path(favorite.todo_list) do %>
+              <%= favorite.todo_list.title %>
+            <% end %>
+          </h1>
+          <% if favorite.todo_list.personal? %>
+            <small class="text-personal">Pessoal</small>
+          <% elsif favorite.todo_list.shareable? %>
+            <small class="text-public">Pública</small>
+          <% end %>
+
+          <span class="badge badge-<%= favorite.todo_list.badge_color %>"><%= favorite.todo_list.status %></span>
+          <p class="favorite-completed-tasks"><small><%= favorite.todo_list.percent_complete %> ( <%= favorite.todo_list.completed_tasks %> / <%= favorite.todo_list.total_tasks %> Tarefas )</small></p>
+        </div>
+      </div>
+    <% end %>
+  </main>
+</div>
+
+

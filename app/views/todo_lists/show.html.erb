@@ -1,31 +1,49 @@
-<div class="show_container">
+<div class="show-container">
+
   <header class="show-header">
-    <div class="show_title_wrapper">
-      <h1>
-        <%= link_to todo_lists_path, class: 'show_back_btn' do %>
-          <i class="fas fa-arrow-left"></i>
-        <% end %>
-        <%= @todo_list.title %>
-        <%= link_to favorite_text, favorites_update_path(todo_list: @todo_list), id: 'favorite_link', remote: true  %>
-        <% end %>
-        <span class="badge badge-<%= @todo_list.badge_color %>"><%= @todo_list.status %></span>
-      </h1>
-      <p class="completed-tasks"><small><%= @todo_list.percent_complete %> ( <%= @todo_list.completed_tasks %> / <%= @todo_list.total_tasks %> Tasks )</small></p>
-      <%= link_to 'Edit', edit_todo_list_path(@todo_list), class: 'show_edit_btn' %>
-    </div>
+    <h1>
+      <%= link_to todo_lists_path, class: 'show_back_btn' do %>
+        <i class="fas fa-arrow-left"></i>
+      <% end %>
+      <%= @todo_list.title %>
+      <span class="badge badge-<%= @todo_list.badge_color %>"><%= @todo_list.status %></span>
+      <%= link_to favorite_text,favorite_path(todo_list: @todo_list), method: :put, id: 'favorite_link', remote: :true, class: 'favorite_list_btn'  %>
+    </h1>
+    <% if @todo_list.user == current_user %>
+      <%= link_to 'Editar Lista', edit_todo_list_path(@todo_list), class:"btn-edit-list" %>
+    <% end %>
   </header>
+
+  <div class="make-private-or-public-section">
+    <% if @todo_list.shareable? && @todo_list.user == current_user %>
+      <%= form_with(url: todo_list_make_personal_path(@todo_list.id), method: :put) do %>
+        <%= hidden_field_tag :status, :personal %>
+        <%= submit_tag("Tornar privada", class: "make_personal_btn") %>
+      <% end %>
+    <% elsif @todo_list.personal? %>
+      <%= form_with(url: todo_list_make_public_path(@todo_list.id), method: :put) do %>
+        <%= hidden_field_tag :status, :shareable %>
+        <%= submit_tag("Tornar pública", class: "make_public_btn") %>
+      <% end %>
+    <% end %>
+  </div>
+
   <div id="progress-bar">
     <div class="progress-bar" role="progressbar" style="width: <%= @todo_list.percent_complete %>%" aria-valuenow="<%= @todo_list.percent_complete %>" aria-valuemin="0" aria-valuemax="100">
     </div>
   </div>
-  <%# Input for new task %>
-  <%= form_for([@todo_list, @task]) do |f| %>
-    <%= f.text_field :description, class: 'add_task_field', placeholder: 'Enter task name' %>
-    <%= f.submit "+ Add", class: 'add_task_btn' %>
-  <% end %>
 
-  <main>
-    <% @todo_list.tasks.each do |task| %>
+  <div class="show-tasks">
+    <% if @todo_list.user == current_user %>
+      <%= form_for([@task.todo_list, @task]) do |f| %>
+        <form class="add_task_form">
+          <%= f.text_field :description, class: 'add_task_field', placeholder: 'Enter task name' %>
+          <%= f.submit "+ Add", class: 'add_task_btn' %>
+        </form>
+      <% end %>
+    <% end %>
+
+    <% @todo_list.tasks.order(created_at: :asc).each do |task| %>
       <%# Verifica se a task existe no banco de dados, assim, previne-se que uma 'task fantasma' seja criada %>
       <% if task.persisted? %>
         <% if task.completed? %>
@@ -55,5 +73,6 @@
         <% end %>
       <% end %>
     <% end %>
-  </main>
+  </div>
+  
 </div>

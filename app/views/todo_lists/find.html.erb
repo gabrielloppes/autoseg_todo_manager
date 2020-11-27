@@ -1,0 +1,27 @@
+<div class="container">
+  <h1>Descobrir Listas</h1>
+  <table>
+    <thead>
+      <tr>
+        <th scope="col">Nome</th>
+        <th scope="col">Usuário</th>
+        <th scope="col">Favorita</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @todo_lists.each do |todo_list|  %>
+          <tr>
+              <td><%= link_to todo_list.title, todo_list_path(todo_list) %></td>
+              <td><%= todo_list.user.name %></td>
+              <td>
+                <% if @favorites_ids.include?(todo_list.id) %>
+                  <span class='text-primary'>Sim</span>
+                <% else %>
+                  <span class='text-dark'>Não</span>
+                <% end %>
+              </td>
+          </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
