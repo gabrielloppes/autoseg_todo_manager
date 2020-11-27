@@ -1,22 +1,75 @@
 // GRID DEFINITION
 .favorite-container {
   display: grid;
-  grid-template-rows: 200px 1fr;
+  grid-template-rows: 101px 1fr;
+  grid-template-columns: 250px 1fr;
   grid-template-areas:
-    'header'
-    'main';
+    'aside new_list'
+    'aside main';
   height: 100vh;
 }
 // END OF GRID DEFINITION
+
+// ASIDE SECTION
+.favorite-aside {
+  grid-area: aside;
+  display: grid;
+  grid-template-rows: 100px 1fr;
+  grid-template-areas:
+    'logo'
+    'nav';
+  border-right: 1px solid #dddddd;
+  background: #ffffff;
+}
+
+.favorite-aside .logo {
+  align-self: center;
+  justify-self: center;
+  font-family: IBM Plex Sans;
+  font-weight: 700;
+  color: #0000ff;
+}
+
+.favorite-aside .favorite_aside_nav {
+  border-top: 1px solid #dddddd;
+}
+
+.favorite-aside .favorite_aside_nav ul {
+  padding: 0;
+  // border-top: 1px solid #dddddd;
+}
+
+.favorite-aside .favorite_aside_nav ul li {
+  padding: 20px 20px 20px 40px;
+  border-right: 2px solid transparent;
+  display: flex;
+  align-items: center;
+  transition: 0.2s ease;
+}
+
+.favorite-aside .favorite_aside_nav ul li svg {
+  margin-right: 10px;
+}
+
+.favorite-aside .favorite_aside_nav ul li:hover {
+  border-right: 2px solid blue;
+}
+
+.favorite-aside .favorite_aside_nav ul li a {
+  color: #4b4852;
+  font-family: IBM PLex Sans;
+  font-weight: 700;
+}
+// END OF ASIDE SECTION
 
 // HEADER SECTION
 .header-favorite {
   display: grid;
   grid-template-columns: 1fr auto;
-  grid-area: header;
-  align-self: center;
+  grid-area: new_list;
   align-items: center;
-  padding: 0 50px;
+  border-bottom: 1px solid #dddddd;
+  padding: 0 20px;
 }
 
 .header-favorite h1 {
@@ -30,12 +83,11 @@
   grid-area: main;
   height: 100vh;
   display: grid;
-  margin: 30px 20px;
+  margin: 20px 20px;
   gap: 1rem;
-  grid-template-columns: repeat(auto-fit, minmax(609px, 609px));
+  grid-template-columns: repeat(auto-fit, minmax(700px, 1fr));
   grid-auto-rows: 240px;
   grid-auto-flow: dense;
-  max-width: 100vw;
 }
 // END OF MAIN SECTION GRID
 
@@ -86,6 +138,7 @@
 }
 
 .favorite-card-item h1 i {
+  grid-area: star;
   color: gold;
   font-size: 20px;
   margin-left: 5px;

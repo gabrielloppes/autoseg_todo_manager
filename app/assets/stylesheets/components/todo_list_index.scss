@@ -1,22 +1,75 @@
 // GRID DEFINITION
 .index-container {
   display: grid;
-  grid-template-rows: 200px 1fr;
+  grid-template-rows: 101px 1fr;
+  grid-template-columns: 250px 1fr;
   grid-template-areas:
-    'new_list'
-    'main';
+    'aside new_list'
+    'aside main';
   height: 100vh;
 }
 // END OF GRID DEFINITION
+
+// ASIDE SECTION
+.aside {
+  grid-area: aside;
+  display: grid;
+  grid-template-rows: 100px 1fr;
+  grid-template-areas:
+    'logo'
+    'nav';
+  border-right: 1px solid #dddddd;
+  background: #ffffff;
+}
+
+.aside .logo {
+  align-self: center;
+  justify-self: center;
+  font-family: IBM Plex Sans;
+  font-weight: 700;
+  color: #0000ff;
+}
+
+.aside .aside_nav {
+  border-top: 1px solid #dddddd;
+}
+
+.aside .aside_nav ul {
+  padding: 0;
+  // border-top: 1px solid #dddddd;
+}
+
+.aside .aside_nav ul li {
+  padding: 20px 20px 20px 40px;
+  border-right: 2px solid transparent;
+  display: flex;
+  align-items: center;
+  transition: 0.2s ease;
+}
+
+.aside .aside_nav ul li svg {
+  margin-right: 10px;
+}
+
+.aside .aside_nav ul li:hover {
+  border-right: 2px solid blue;
+}
+
+.aside .aside_nav ul li a {
+  color: #4b4852;
+  font-family: IBM PLex Sans;
+  font-weight: 700;
+}
+// END OF ASIDE SECTION
 
 // NEW LIST SECTION
 .new_list {
   display: grid;
   grid-template-columns: 1fr auto;
   grid-area: new_list;
-  align-self: center;
   align-items: center;
-  padding: 0 50px;
+  border-bottom: 1px solid #dddddd;
+  padding: 0 20px;
 }
 
 .new_list h1 {
@@ -40,12 +93,11 @@
   grid-area: main;
   height: 100vh;
   display: grid;
-  margin: 30px 20px;
+  margin: 20px 20px;
   gap: 1rem;
-  grid-template-columns: repeat(auto-fit, minmax(609px, 609px));
+  grid-template-columns: repeat(auto-fit, minmax(700px, 1fr));
   grid-auto-rows: 240px;
   grid-auto-flow: dense;
-  max-width: 100vw;
 }
 
 // END OF MAIN SECTION
@@ -102,7 +154,6 @@
   align-self: center;
   justify-self: end;
 }
-
 
 .index-card-item span {
   grid-area: badge;

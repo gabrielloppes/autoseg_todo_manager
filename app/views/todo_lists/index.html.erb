@@ -1,8 +1,30 @@
 <div class="index-container">
-  <section class="new_list">
+  <aside class="aside">
+    <%= link_to root_path, class: 'logo' do %>
+      <h1>Tasky</h1>
+    <% end %>
+    <nav class="aside_nav">
+      <ul>
+        <li class="aside_nav_item">
+          <%= octicon "checklist", :height => 24 %>
+          <%= link_to 'Listas',todo_lists_path, method: :get  %>
+        </li>
+        <li class="aside_nav_item">
+          <%= octicon "star", :height => 24 %>
+          <%= link_to 'Favoritos', favorites_path, method: :get %>
+        </li>
+        <li class="aside_nav_item">
+          <%= octicon "package-dependents", :height => 24 %>
+          <%= link_to 'Sair', destroy_user_session_path, method: :delete %>
+        </li>
+      </ul>
+    </nav>
+  </aside>
+
+  <header class="new_list">
     <h1><%= "Olá, #{current_user.name}" %></h1>
     <%= link_to '+ Nova Lista', new_todo_list_path, class:"new_list_btn" %>
-  </section>
+  </header>
 
   <main class="index-main">
     <% @todo_lists.each do |todo_list|  %>
