@@ -18,8 +18,10 @@
   grid-template-areas:
     'logo'
     'nav';
-  border-right: 1px solid #dddddd;
   background: #ffffff;
+  box-shadow: 0px 4px 4px rgba(51, 51, 51, 0.04),
+    0px 4px 16px rgba(51, 51, 51, 0.08);
+  z-index: 999;
 }
 
 .favorite-aside .logo {
@@ -28,10 +30,6 @@
   font-family: IBM Plex Sans;
   font-weight: 700;
   color: #0000ff;
-}
-
-.favorite-aside .favorite_aside_nav {
-  border-top: 1px solid #dddddd;
 }
 
 .favorite-aside .favorite_aside_nav ul {
@@ -76,8 +74,10 @@
   grid-template-columns: 1fr auto;
   grid-area: new_list;
   align-items: center;
-  border-bottom: 1px solid #dddddd;
   padding: 0 20px;
+  background-color: #fff;
+  box-shadow: 0px 4px 4px rgba(51, 51, 51, 0.04),
+    0px 4px 16px rgba(51, 51, 51, 0.08);
 }
 
 .header-favorite h1 {
@@ -103,11 +103,12 @@
 .favorite-card-item {
   background: #fff;
   padding: 20px;
-  border: 2px solid #DDDDDD;
+  border: 2px solid #dddddd;
   border-radius: 4.73446px;
 }
 
-.text-personal, .text-public {
+.text-personal,
+.text-public {
   font-family: Poppins;
   color: #000000;
   width: max-content;

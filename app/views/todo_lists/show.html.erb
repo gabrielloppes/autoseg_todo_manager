@@ -1,10 +1,10 @@
 <div class="show-container">
 
+  <%= link_to todo_lists_path, class: 'show_back_btn' do %>
+    <i class="fas fa-arrow-left"></i>
+  <% end %>
   <header class="show-header">
     <h1>
-      <%= link_to todo_lists_path, class: 'show_back_btn' do %>
-        <i class="fas fa-arrow-left"></i>
-      <% end %>
       <%= @todo_list.title %>
       <span class="badge badge-<%= @todo_list.badge_color %>"><%= @todo_list.status %></span>
       <%= link_to favorite_text,favorite_path(todo_list: @todo_list), method: :put, id: 'favorite_link', remote: :true, class: 'favorite_list_btn'  %>
@@ -29,20 +29,18 @@
   </div>
 
   <div id="progress-bar">
-    <div class="progress-bar" role="progressbar" style="width: <%= @todo_list.percent_complete %>%" aria-valuenow="<%= @todo_list.percent_complete %>" aria-valuemin="0" aria-valuemax="100">
+    <div role="progressbar" style="width: <%= @todo_list.percent_complete %>%" aria-valuenow="<%= @todo_list.percent_complete %>" aria-valuemin="0" aria-valuemax="100">
     </div>
   </div>
 
-  <div class="show-tasks">
     <% if @todo_list.user == current_user %>
       <%= form_for([@task.todo_list, @task]) do |f| %>
-        <form class="add_task_form">
-          <%= f.text_field :description, class: 'add_task_field', placeholder: 'Enter task name' %>
-          <%= f.submit "+ Add", class: 'add_task_btn' %>
-        </form>
+        <%= f.text_field :description, class: 'add_task_field', placeholder: 'Enter task name' %>
+        <%= f.submit "+ Add", class: 'add_task_btn' %>
       <% end %>
     <% end %>
 
+  <div class="show-tasks">
     <% @todo_list.tasks.order(created_at: :asc).each do |task| %>
       <%# Verifica se a task existe no banco de dados, assim, previne-se que uma 'task fantasma' seja criada %>
       <% if task.persisted? %>

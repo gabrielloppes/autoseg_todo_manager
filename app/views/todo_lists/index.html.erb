@@ -22,8 +22,11 @@
   </aside>
 
   <header class="new_list">
-    <h1><%= "Olá, #{current_user.name}" %></h1>
-    <%= link_to '+ Nova Lista', new_todo_list_path, class:"new_list_btn" %>
+    <h1><%= "Olá, " %> <span><%= "#{current_user.name}" %></span> </h1>
+    <%= link_to new_todo_list_path, class:"new_list_btn" do %>
+      <%= octicon "arrow-right", :height => 24 %>
+      <%= "Criar" %>
+    <% end %>
   </header>
 
   <main class="index-main">

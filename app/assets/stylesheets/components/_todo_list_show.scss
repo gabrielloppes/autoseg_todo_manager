@@ -1,11 +1,13 @@
 // GRID DEFINITION
 .show-container {
   display: grid;
-  grid-template-rows: 100px 100px 1fr;
+  grid-template-rows: 100px 30px 100px 1fr;
+  grid-template-columns: 1fr 3fr 1fr;
   grid-template-areas:
-    'header'
-    'progress_bar'
-    'tasks';
+    'header header header'
+    'progress_bar progress_bar progress_bar'
+    'new_task_form new_task_form new_task_form'
+    'tasks tasks tasks';
   height: 100vh;
 }
 // END OF GRID DEFINITION
@@ -14,9 +16,10 @@
 .show-header {
   grid-area: header;
   align-items: center;
-  padding: 20px 50px;
+  padding: 20px 0;
   display: grid;
   grid-template-columns: 1fr auto;
+  grid-column: 2;
 }
 
 .show-header h1 {
@@ -40,20 +43,38 @@
 }
 // END OF HEADER SECTION
 
+// FORM SECTION
+.new_task {
+  grid-area: new_task_form;
+  grid-column: 2;
+  align-self: center;
+  justify-self: center;
+  width: 100%;
+  position: sticky;
+}
+
+.new_task > input[type="text"] {
+  width: 90%;
+}
+
+// END OF FORM SECTION
+
 // PROGRESS BAR SECTION
 #progress-bar {
   grid-area: progress_bar;
-  background-color: #f2f3f5;
+  background: #f7f6ff;
+  border-radius: 10px;
   height: max-content;
-  margin: 0 50px;
   align-self: center;
+  grid-column: 2;
 }
 
 #progress-bar > div {
-  background-color: #8c65f6;
+  background: linear-gradient(360deg, #5974f5 -109.73%, #4745fa 100%);
+  box-shadow: 11px 2px 36px rgba(0, 0, 0, 0.195652);
   height: 20px;
   transition: 0.5s ease;
-  border-radius: 100px;
+  border-radius: 10px;
 }
 // END OF PROGRESS BAR SECTION
 
