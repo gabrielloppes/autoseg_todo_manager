@@ -31,26 +31,24 @@
 
   <main class="index-main">
     <% @todo_lists.each do |todo_list|  %>
-      <div class="index-card-container">
-        <div class="index-card-item">
-          <h1>
-            <%= link_to todo_list.title, todo_list_path(todo_list) %>
-            <% if todo_list.favorite == true %>
-              <i class="fas fa-heart"></i>
-            <% end %>
-          </h1>
-          <% if todo_list.personal? %>
-            <small class="text-personal">Privada</small>
-          <% elsif todo_list.shareable? %>
-            <small class="text-public">Pública</small>
+      <div class="index-card-item">
+        <h1>
+          <%= link_to todo_list.title, todo_list_path(todo_list) %>
+          <% if todo_list.favorite == true %>
+            <i class="fas fa-heart"></i>
           <% end %>
+        </h1>
+        <% if todo_list.personal? %>
+          <small class="text-personal">Privada</small>
+        <% elsif todo_list.shareable? %>
+          <small class="text-public">Pública</small>
+        <% end %>
 
-          <span class="badge badge-<%= todo_list.badge_color %>"><%= todo_list.status %></span>
-          <p class="completed-tasks"><small><%= todo_list.percent_complete %> ( <%= todo_list.completed_tasks %> / <%= todo_list.total_tasks %> Tarefas )</small></p>
-          <%= link_to todo_list, method: :delete, data: { confirm: 'Are you sure?' }, class: 'index_delete_btn' do %>
-            <i class="fas fa-trash"></i>
-          <% end %>
-        </div>
+        <span class="badge badge-<%= todo_list.badge_color %>"><%= todo_list.status %></span>
+        <p class="completed-tasks"><small><%= todo_list.percent_complete %> ( <%= todo_list.completed_tasks %> / <%= todo_list.total_tasks %> Tarefas )</small></p>
+        <%= link_to todo_list, method: :delete, data: { confirm: 'Are you sure?' }, class: 'index_delete_btn' do %>
+          <i class="fas fa-trash"></i>
+        <% end %>
       </div>
     <% end %>
   </main>
