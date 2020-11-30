@@ -1,25 +1,23 @@
-<div class="new-container">
-  <header class="header_new">
-    <h1>Crie uma nova lista</h1>
-    <%= form_with model: @todo_list do |form| %>
-      <%= form.label(:status, "Privada") %>
-      <%= form.radio_button(:status, :personal, checked: true) %>
-      <%= form.label(:status, "Pública") %> 
-      <%= form.radio_button(:status, :shareable) %>
-    <% end %>
-  </header>
-  
-  <main class="new_form">
-    <%= form_for(@todo_list) do |f| %>
-      <%= f.text_field :title, placeholder: 'Enter title' %>
-      <%= f.submit %>
-    <% end %>
+<header class="header_new">
+  <h1>Crie uma nova lista</h1>
+  <%= form_with model: @todo_list do |form| %>
+    <%= form.label(:status, "Privada") %>
+    <%= form.radio_button(:status, :personal, checked: true) %>
+    <%= form.label(:status, "Pública") %> 
+    <%= form.radio_button(:status, :shareable) %>
+  <% end %>
+</header>
 
-    <% if @todo_list.errors.any?%>
-      <p>Por favor, corriga os erros para continuar:</p>
-      <% @todo_list.errors.full_messages.each do |message|  %>
-          <p><%= message %></p>
-      <% end %>
+<main class="new_form">
+  <%= form_for(@todo_list) do |f| %>
+    <%= f.text_field :title, placeholder: 'Enter title' %>
+    <%= f.submit %>
+  <% end %>
+
+  <% if @todo_list.errors.any?%>
+    <p>Por favor, corriga os erros para continuar:</p>
+    <% @todo_list.errors.full_messages.each do |message|  %>
+        <p><%= message %></p>
     <% end %>
-  </main>
-</div>
+  <% end %>
+</main>

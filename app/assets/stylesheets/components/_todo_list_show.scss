@@ -92,6 +92,29 @@
           }
         }
       }
+
+      .task_title_wrapper_done {
+        display: flex;
+        align-items: center;
+        h3 {
+          color: #616161;
+          text-decoration: line-through;
+          margin-left: 20px;
+          font-family: IBM Plex Sans;
+          font-weight: 500;
+        }
+        .btn_check_complete {
+          svg {
+            fill: #a0a1a3;
+          }
+        }
+
+        .btn_check_undo {
+          svg {
+            fill: #3751ff;
+          }
+        }
+      }
     }
   }
 
@@ -118,53 +141,3 @@
     }
   }
 }
-
-// // END OF GRID DEFINITION
-
-// // HEADER SECTION
-// .show-header {
-//   grid-area: header;
-//   align-items: center;
-//   padding: 20px 0;
-//   display: grid;
-//   grid-template-columns: 1fr auto;
-//   grid-column: 2;
-// }
-
-// .show-header h1 {
-//   font-family: Poppins;
-//   font-weight: 700;
-//   color: #4b4852;
-//   display: flex;
-//   max-width: max-content;
-// }
-
-// .btn-edit-list {
-//   padding: 15px 30px;
-//   color: #fff;
-//   font-family: Poppins;
-//   background-color: #0000ff;
-// }
-// // END OF HEADER SECTION
-
-// // FORM SECTION
-// .new_task {
-//   grid-area: new_task_form;
-//   align-self: center;
-//   justify-self: center;
-//   width: 100%;
-//   position: sticky;
-//   input[type='text'] {
-//     width: 90%;
-//   }
-// }
-
-// // END OF FORM SECTION
-
-// // PROGRESS BAR SECTION
-//
-
-// // TASKS SECTION
-// .show-tasks {
-//   grid-area: tasks;
-// }

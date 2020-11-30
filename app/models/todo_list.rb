@@ -5,11 +5,10 @@ class TodoList < ApplicationRecord
 
   enum status: { personal: 0, shareable: 5 }
 
-  validates_length_of :title, within: 1..26, on: :create, message: "must be present"
-  
-  # Título da lista deve existir
-  validates :title, presence: { message: "Title can't be blank" }
-  
+  accepts_nested_attributes_for :tasks, reject_if: proc { |att| att['description'].blank? }, allow_destroy: true
+
+  validates_length_of :title, within: 1..26
+
   # Verifica o status das tasks
   def status
     return 'not-started' if tasks.none?

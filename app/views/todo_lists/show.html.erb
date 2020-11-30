@@ -60,7 +60,7 @@
       <% if task.persisted? %>
         <% if task.completed? %>
           <div class="task_container">
-            <div class="task_title_wrapper">
+            <div class="task_title_wrapper_done">
               <%= link_to '#', class: 'btn_check_undo', data: { reflex: 'click->Task#mark_incomplete', id: task.id } do %>
                 <%= octicon "check-circle-fill", :height => 24 %>
               <% end %>
