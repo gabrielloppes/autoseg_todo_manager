@@ -1,76 +1,89 @@
-<div class="show-container">
-
-  <%= link_to todo_lists_path, class: 'show_back_btn' do %>
-    <i class="fas fa-arrow-left"></i>
-  <% end %>
-  <header class="show-header">
-    <h1>
-      <%= @todo_list.title %>
-      <span class="badge badge-<%= @todo_list.badge_color %>"><%= @todo_list.status %></span>
+<header class="show-header">
+  <div class="show-title">
+    <div class="show-title-wrapper">
+      <h1><%= @todo_list.title %></h1>
+        <div class="make-private-or-public-section">
+          <% if @todo_list.shareable? && @todo_list.user == current_user %>
+            <%= form_with(url: todo_list_make_personal_path(@todo_list.id), method: :put) do %>
+              <%= hidden_field_tag :status, :personal %>
+              <%= button_tag(type: "submit", class: "make_personal_btn") do %>
+                <%= octicon "eye", :height => 30 %>
+              <% end %>
+            <% end %>
+          <% elsif @todo_list.personal? %>
+            <%= form_with(url: todo_list_make_public_path(@todo_list.id), method: :put) do %>
+              <%= hidden_field_tag :status, :shareable %>
+              <%= button_tag(type: "submit", class: "make_personal_btn") do %>
+                <%= octicon "eye-closed", :height => 30 %>
+              <% end %>
+            <% end %>
+          <% end %>
+        </div>
+    </div>
+    <div class="actions">
       <%= link_to favorite_text,favorite_path(todo_list: @todo_list), method: :put, id: 'favorite_link', remote: :true, class: 'favorite_list_btn'  %>
-    </h1>
-    <% if @todo_list.user == current_user %>
-      <%= link_to 'Editar Lista', edit_todo_list_path(@todo_list), class:"btn-edit-list" %>
-    <% end %>
-  </header>
-
-  <div class="make-private-or-public-section">
-    <% if @todo_list.shareable? && @todo_list.user == current_user %>
-      <%= form_with(url: todo_list_make_personal_path(@todo_list.id), method: :put) do %>
-        <%= hidden_field_tag :status, :personal %>
-        <%= submit_tag("Tornar privada", class: "make_personal_btn") %>
+      <% if @todo_list.user == current_user %>
+        <%= link_to edit_todo_list_path(@todo_list), class:"btn-edit-list" do %>
+          <%= octicon "pencil", :height => 30 %>
+        <% end %>
       <% end %>
-    <% elsif @todo_list.personal? %>
-      <%= form_with(url: todo_list_make_public_path(@todo_list.id), method: :put) do %>
-        <%= hidden_field_tag :status, :shareable %>
-        <%= submit_tag("Tornar pública", class: "make_public_btn") %>
-      <% end %>
-    <% end %>
+      <span class="badge badge-<%= @todo_list.badge_color %>"><%= @todo_list.status %></span>
+    </div>
   </div>
+</header>
 
+
+
+
+
+<div class="show_task_section">
   <div id="progress-bar">
     <div role="progressbar" style="width: <%= @todo_list.percent_complete %>%" aria-valuenow="<%= @todo_list.percent_complete %>" aria-valuemin="0" aria-valuemax="100">
     </div>
   </div>
 
-    <% if @todo_list.user == current_user %>
-      <%= form_for([@task.todo_list, @task]) do |f| %>
-        <%= f.text_field :description, class: 'add_task_field', placeholder: 'Enter task name' %>
-        <%= f.submit "+ Add", class: 'add_task_btn' %>
+  <%# Add new task section %>
+  <% if @todo_list.user == current_user %>
+    <%= form_for([@task.todo_list, @task]) do |f| %>
+      <%= f.text_field :description, class: 'add_task_field', placeholder: 'Enter task name' %>
+      <%= button_tag(type: "submit", class: "add_task_btn") do %>
+        <%= octicon "paper-airplane", :height => 30 %>
       <% end %>
+      <%# <%= f.submit "+", class: 'add_task_btn' %>
     <% end %>
+  <% end %>
 
+  <%# Tasks cards %>
   <div class="show-tasks">
     <% @todo_list.tasks.order(created_at: :asc).each do |task| %>
       <%# Verifica se a task existe no banco de dados, assim, previne-se que uma 'task fantasma' seja criada %>
       <% if task.persisted? %>
         <% if task.completed? %>
-          <div class="show_task_container">
-            <%= link_to [task.todo_list, task], method: :delete, data: { confirm: 'Are you sure?' }, class: 'delete_task_btn' do %>
-              <i class="fas fa-times"></i>
-            <% end %>
-            <div class="show_task_item">
-              <h3><span><%= task.description %></span></h3>
+          <div class="task_container">
+            <div class="task_title_wrapper">
+              <%= link_to '#', class: 'btn_check_undo', data: { reflex: 'click->Task#mark_incomplete', id: task.id } do %>
+                <%= octicon "check-circle-fill", :height => 24 %>
+              <% end %>
+              <h3><%= task.description %></h3>
             </div>
-            <%= link_to '#', class: 'btn_check_undo', data: { reflex: 'click->Task#mark_incomplete', id: task.id } do %>
-              <i class="fas fa-check"></i>
+            <%= link_to [task.todo_list, task], method: :delete, data: { confirm: 'Are you sure?' }, class: 'delete_task_btn' do %>
+              <%= octicon "x", :height => 24 %>
             <% end %>
           </div>
         <% else %>
-          <div class="show_task_container">
-            <%= link_to [task.todo_list, task], method: :delete, data: { confirm: 'Are you sure?' }, class: 'delete_task_btn' do %>
-              <i class="fas fa-times"></i>
-            <% end %>
-            <div class="show_task_item">
+          <div class="task_container">
+            <div class="task_title_wrapper">
+              <%= link_to '#', class: 'btn_check_complete', data: { reflex: 'click->Task#mark_complete', id: task.id } do %>
+                <%= octicon "check-circle", :height => 24 %>
+              <% end %>
               <h3><%= task.description %></h3>
             </div>
-            <%= link_to '#', class: 'btn_check_complete', data: { reflex: 'click->Task#mark_complete', id: task.id } do %>
-              <i class="fas fa-undo-alt"></i>
+            <%= link_to [task.todo_list, task], method: :delete, data: { confirm: 'Are you sure?' }, class: 'delete_task_btn' do %>
+              <%= octicon "x", :height => 24 %>
             <% end %>
           </div>
         <% end %>
       <% end %>
     <% end %>
   </div>
-  
 </div>

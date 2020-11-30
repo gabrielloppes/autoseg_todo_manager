@@ -3,10 +3,10 @@
 @import 'components/index';
 
 // Import Google Fonts
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=IBM+Plex+Sans:wght@500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=Montserrat:wght@700;800&display=swap');
 
 :root {
-  background: #FFFFFF;
+  background: #f5f5fb;
 }
 
 * {
@@ -23,4 +23,122 @@ li {
 
 a {
   text-decoration: none;
+}
+
+.application-container {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  grid-template-rows: 120px 1fr;
+  grid-template-areas:
+    'aside header'
+    'aside main';
+  height: 100vh;
+  .aside {
+    grid-area: aside;
+    display: grid;
+    grid-template-rows: 120px 1fr;
+    grid-template-areas:
+      'logo'
+      'nav';
+    background: #fff;
+    border-right: 2px solid #dfe0eb;
+    z-index: 999;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    min-width: 300px;
+    .logo {
+      align-self: center;
+      justify-self: center;
+      font-family: Montserrat;
+      font-weight: 800;
+      color: #0053f0;
+      font-size: 1.3rem;
+    }
+
+    .aside_nav {
+      .new_list_btn {
+        font-family: Montserrat;
+        font-weight: 600;
+        color: #ffffff;
+        background: #0053f0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 200px;
+        height: 45px;
+        border-radius: 4px;
+        margin: 20px auto;
+        transition: 0.2s ease;
+        svg {
+          fill: #fff;
+          margin-right: 5px;
+        }
+      }
+
+      .new_list_btn:hover {
+        background: #0f3675;
+      }
+    }
+
+    .aside_nav ul {
+      padding: 0;
+      li {
+        padding: 10px 20px 10px 50px;
+        border-right: 2px solid transparent;
+        display: flex;
+        align-items: center;
+        transition: 0.2s ease;
+        margin: 30px 0;
+        a {
+          color: #4b4852;
+          font-family: IBM PLex Sans;
+          font-weight: 700;
+        }
+        svg {
+          margin-right: 10px;
+          fill: #b1b6d1;
+        }
+      }
+
+      li:hover {
+        border-right: 2px solid #0053f0;
+        z-index: 999;
+        a {
+          color: #0053f0;
+        }
+        svg {
+          fill: #0053f0;
+        }
+      }
+    }
+  }
+
+  .index-header {
+    grid-area: header;
+    align-self: center;
+    padding: 0 20px;
+    h1 {
+      max-width: max-content;
+      font-family: Montserrat;
+      font-weight: 800;
+      span {
+        color: #0053f0;
+      }
+    }
+  }
+
+  .favorite-header {
+    grid-area: header;
+    align-self: center;
+    padding: 0 20px;
+    h1 {
+      max-width: max-content;
+      font-family: Montserrat;
+      font-weight: 800;
+      span {
+        color: #0053f0;
+      }
+    }
+  }
 }

@@ -11,28 +11,53 @@
   </head>
 
   <body>
-  <%# QUANDO FOR NOTICE %>
-  <% if notice %>
-    <div id="notice_wrapper">
-      <p class="notice">
-        <%= octicon "check-circle", :height => 24 %>
-        <%= notice %>
-      </p>
-    </div>
-  <%# QUANDO FOR ALERT %>
-  <% elsif alert %>
-    <div id="alert_wrapper">
-      <p class="alert">
-        <%= octicon "alert", :height => 24 %>
-        <%= alert %>
-      </p>
-    </div>
-  <% end %>
-  <%# <% if user_signed_in? %>
-    <%# <%= render "shared/navbar" %>
-  <%# <% end %>
+    <% if notice %>
+      <div id="notice_wrapper">
+        <p class="notice">
+          <%= octicon "check-circle", :height => 24 %>
+          <%= notice %>
+        </p>
+      </div>
+    <% elsif alert %>
+      <div id="alert_wrapper">
+        <p class="alert">
+          <%= octicon "alert", :height => 24 %>
+          <%= alert %>
+        </p>
+      </div>
+    <% end %>
   
-    
+  <% if user_signed_in? %>
+    <div class="application-container">
+      <aside class="aside">
+        <%= link_to root_path, class: 'logo' do %>
+          <h1>Tasky</h1>
+        <% end %>
+        <nav class="aside_nav">
+          <%= link_to new_todo_list_path, class:"new_list_btn" do %>
+            <%= octicon "arrow-right", :height => 24 %>
+            <%= "Nova lista" %>
+          <% end %>
+          <ul>
+            <li class="aside_nav_item">
+              <%= octicon "checklist", :height => 24 %>
+              <%= link_to 'Listas',todo_lists_path, method: :get  %>
+            </li>
+            <li class="aside_nav_item">
+              <%= octicon "heart", :height => 24 %>
+              <%= link_to 'Favoritos', favorites_path, method: :get %>
+            </li>
+            <li class="aside_nav_item">
+              <%= octicon "sign-out", :height => 24 %>
+              <%= link_to 'Sair', destroy_user_session_path, method: :delete %>
+            </li>
+          </ul>
+        </nav>
+      </aside>
+      <%= yield %>
+    </div>
+    <% else %>
     <%= yield %>
+  <% end %>
   </body>
 </html>

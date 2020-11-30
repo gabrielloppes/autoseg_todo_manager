@@ -1,79 +1,80 @@
 // LIST INDEX PAGE BADGES
-.index-card-item .badge {
-  font-size: 14px;
-  border-radius: 4px;
-  color: #fff;
-  font-family: IBM Plex Sans;
-  font-weight: 700;
-  width: 150px;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+.index-card-item {
+  .badge {
+    font-size: 14px;
+    color: #fff;
+    border-radius: 4px;
+    font-family: IBM Plex Sans;
+    font-weight: 700;
+    width: 150px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .badge-complete {
+    background-color: #29CC97;
+  }
 
-// Badge Colors
-.index-card-item .badge-complete {
-  background-color: #36B368;
-}
+  .badge-in-progress {
+    background-color: #FEC400;
+  }
 
-.index-card-item .badge-in-progress {
-  background-color: #513CCC;
-}
-
-.index-card-item .badge-not-started {
-  background-color: #393B3F;
+  .badge-not-started {
+    background-color: #393b3f;
+  }
 }
 
 // LIST SHOW PAGE BADGES
-.show-header h1 .badge {
-  font-size: 14px;
-  border-radius: 4px;
-  color: #fff;
-  font-family: IBM Plex Sans;
-  font-weight: 700;
-  width: 150px;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+.show-title {
+  .badge {
+    font-size: 14px;
+    color: #fff;
+    font-family: IBM Plex Sans;
+    border-radius: 4px;
+    font-weight: 700;
+    width: 150px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .badge-complete {
+    background-color: #29CC97;
+  }
 
-.show-header h1 .badge-complete {
-  background-color: #36B368;
-}
+  .badge-in-progress {
+    background-color: #FEC400;
+  }
 
-.show-header h1 .badge-in-progress {
-  background-color: #513CCC;
-}
-
-.show-header h1 .badge-not-started {
-  background-color: #393B3F;
+  .badge-not-started {
+    background-color: #393b3f;
+  }
 }
 
 // FAVORITE PAGE BADGES
-.favorite-card-item .badge {
-  font-size: 14px;
-  border-radius: 4px;
-  color: #fff;
-  font-family: IBM Plex Sans;
-  font-weight: 700;
-  width: 150px;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+.favorite-card-item {
+  .badge {
+    font-size: 14px;
+    color: #fff;
+    font-family: IBM Plex Sans;
+    border-radius: 4px;
+    font-weight: 700;
+    width: 150px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .badge-complete {
+    background-color: #29CC97;
+  }
 
-// Badge Colors
-.favorite-card-item .badge-complete {
-  background-color: #36B368;
-}
+  .badge-in-progress {
+    background-color: #FEC400;
+  }
 
-.favorite-card-item .badge-in-progress {
-  background-color: #513CCC;
-}
-
-.favorite-card-item .badge-not-started {
-  background-color: #393B3F;
+  .badge-not-started {
+    background-color: #393b3f;
+  }
 }

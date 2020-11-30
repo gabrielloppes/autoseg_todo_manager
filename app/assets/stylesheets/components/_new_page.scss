@@ -5,30 +5,26 @@
   grid-template-areas:
     'new_header new_header new_header'
     'new_form new_form new_form';
-    height: 100vh;
-}
-
-.header_new {
-  grid-area: new_header;
-  display: grid;
-  grid-template-columns: 1fr auto;
-  align-self: center;
-  padding: 20px 0;
-  grid-column: 2;
-  align-items: center;
-}
-
-.header_new h1 {
-  max-width: max-content;
-  font-family: Poppins;
-}
-
-// NEW FORM SECTION
-.new_form {
-  grid-area: new_form;
-  grid-column: 2;
-}
-
-.new_form .form .new_todo_list {
-  width: inherit;
+  height: 100vh;
+  grid-area: main;
+  .header_new {
+    grid-area: new_header;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-self: center;
+    padding: 20px 0;
+    grid-column: 2;
+    align-items: center;
+    h1 {
+      max-width: max-content;
+      font-family: Poppins;
+    }
+  }
+  .new_form {
+    grid-area: new_form;
+    grid-column: 2;
+    .form .new_todo_list {
+      width: inherit;
+    }
+  }
 }

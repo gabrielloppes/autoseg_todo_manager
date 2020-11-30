@@ -2,12 +2,10 @@
   <header class="header_new">
     <h1>Crie uma nova lista</h1>
     <%= form_with model: @todo_list do |form| %>
-      <div class="form-new-container">
-        <%= form.label(:status, "Privada") %>
-        <%= form.radio_button(:status, :personal, checked: true) %>
-        <%= form.label(:status, "Pública") %>
-        <%= form.radio_button(:status, :shareable) %>
-      </div>
+      <%= form.label(:status, "Privada") %>
+      <%= form.radio_button(:status, :personal, checked: true) %>
+      <%= form.label(:status, "Pública") %> 
+      <%= form.radio_button(:status, :shareable) %>
     <% end %>
   </header>
   
@@ -16,15 +14,12 @@
       <%= f.text_field :title, placeholder: 'Enter title' %>
       <%= f.submit %>
     <% end %>
-  </div>
 
-    <div>
-      <% if @todo_list.errors.any?%>
-        <p>Por favor, corriga os erros para continuar:</p>
-        <% @todo_list.errors.full_messages.each do |message|  %>
-            <p><%= message %></p>
-        <% end %>
+    <% if @todo_list.errors.any?%>
+      <p>Por favor, corriga os erros para continuar:</p>
+      <% @todo_list.errors.full_messages.each do |message|  %>
+          <p><%= message %></p>
       <% end %>
-    </div>
+    <% end %>
   </main>
 </div>

@@ -1,147 +1,54 @@
-// GRID DEFINITION
-.index-container {
+.index-main {
+  grid-area: main;
   display: grid;
-  grid-template-rows: 101px 1fr;
-  grid-template-columns: 250px 1fr;
-  grid-template-areas:
-    'aside new_list'
-    'aside main';
-  height: 100vh;
-  // ASIDE SECTION
-  .aside {
-    grid-area: aside;
+  gap: 1rem;
+  margin: 20px 20px;
+  grid-auto-rows: 240px;
+  grid-template-columns: repeat(auto-fit, minmax(600px, 1fr));
+  .index-card-item {
+    height: 240px;
+    padding: 15px;
+    background: #fff;
+    border: 2px solid #dfe0eb;
+    border-radius: 8px;
     display: grid;
-    grid-template-rows: 100px 1fr;
+    grid-template-rows: 1fr 2fr 1fr;
     grid-template-areas:
-      'logo'
-      'nav';
-    background: #faf8f9;
-    .logo {
+      'title'
+      'desc'
+      'bottom';
+    .title-section {
+      grid-area: title;
+      display: flex;
+      justify-content: space-between;
       align-self: center;
-      justify-self: center;
-      font-family: IBM Plex Sans;
-      font-weight: 700;
-      color: #0053f0;
-    }
-    .aside_nav ul {
-      padding: 0;
-      li {
-        padding: 10px 20px 10px 40px;
-        border-right: 2px solid transparent;
-        display: flex;
-        align-items: center;
-        transition: 0.2s ease;
-        margin: 30px 0;
-        a {
-          color: #4b4852;
-          font-family: IBM PLex Sans;
+      .title-wrapper {
+        .text-personal,
+        .text-public {
+          font-family: Montserrat;
+        }
+        h1 a {
+          font-family: IBM Plex Sans;
           font-weight: 700;
+          color: #252733;
         }
-      }
-
-      li:hover {
-        border-right: 2px solid #0053f0;
-      }
-
-      svg {
-        margin-right: 10px;
-        fill: #0053f0;
       }
     }
-  }
-  // END OF ASIDE SECTION
-
-  // NEW LIST SECTION
-  .new_list {
-    display: grid;
-    grid-template-columns: 1fr auto;
-    grid-area: new_list;
-    align-items: center;
-    padding: 0 20px;
-    h1 {
-      font-family: Poppins;
-      font-weight: 600;
-      font-size: 2rem;
-      max-width: max-content;
-      color: #27153e;
-      span {
-        font-weight: 700;
-        color: #0053f0;
-      }
-    }
-  }
-  // END OF NEW LIST SECTION
-
-  // MAIN SECTION
-  .index-main {
-    grid-area: main;
-    height: 100vh;
-    display: grid;
-    margin: 20px 20px;
-    gap: 1rem;
-    grid-template-columns: repeat(auto-fit, minmax(700px, 1fr));
-    grid-auto-rows: 240px;
-    grid-auto-flow: dense;
-    .index-card-item {
-      height: 240px;
-      background: #fff;
-      border: 1px solid #dddddd;
-      padding: 20px;
-      display: grid;
-      grid-template-rows: 40px auto 40px;
-      grid-template-columns: auto auto 140px;
-      grid-template-areas:
-        'title task task'
-        'none none none'
-        'badge delete delete';
-
-      h1 {
-        grid-area: title;
-        font-family: IBM Plex Sans;
-        font-weight: 700;
-        max-width: max-content;
-        display: flex;
-        align-items: center;
-
-        a {
-          color: #4b4852;
-        }
-
-        i {
-          color: red;
-          font-size: 20px;
-          margin-left: 5px;
-        }
-      }
-
-      span {
-        grid-area: badge;
-      }
-
+    .card-bottom {
+      grid-area: bottom;
+      display: flex;
+      justify-content: space-between;
+      align-self: center;
       .completed-tasks {
-        grid-area: task;
-        align-self: center;
-        justify-self: end;
-      }
-
-      p {
         font-family: IBM Plex Sans;
-        color: #4b4852;
         font-weight: 700;
-      }
-      .text-personal,
-      .text-public {
-        font-family: Poppins;
-        color: #000000;
-        width: max-content;
-        height: max-content;
       }
       .index_delete_btn {
-        grid-area: delete;
-        align-self: center;
-        justify-self: end;
+        i {
+          color: #252733;
+          font-size: 1.2rem;
+        }
       }
     }
   }
-  // END OF MAIN SECTION
 }
